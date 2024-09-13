@@ -4,5 +4,4 @@
 library;
 
 export 'src/lib_infomentor_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/login.dart';

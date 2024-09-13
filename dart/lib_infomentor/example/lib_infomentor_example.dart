@@ -1,6 +1,7 @@
+import 'dart:math';
+
 import 'package:lib_infomentor/lib_infomentor.dart';
 
 void main() {
-  var awesome = Awesome();
-  print('awesome: ${awesome.isAwesome}');
+  var loginObj = StockholmSTU().loginCredentials('test', 'test');
 }

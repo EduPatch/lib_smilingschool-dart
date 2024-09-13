@@ -9,8 +9,8 @@ void main() {
       // Additional setup goes here.
     });
 
-    test('First Test', () {
+    /*test('First Test', () {
       expect(awesome.isAwesome, isTrue);
-    });
+    });*/
   });
 }
