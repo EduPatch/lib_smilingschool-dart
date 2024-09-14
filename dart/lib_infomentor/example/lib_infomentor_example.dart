@@ -10,9 +10,6 @@ void main() async {
   //print('$user | $pass');
   InfoMentor imObj;
   imObj = await StockholmSTU().loginCredentials(user, pass);
-  while (!imObj.loggedIn) {
-    sleep(Duration(seconds: 1));
-  }
   var client = imObj.client;
   client
       ?.post(
