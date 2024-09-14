@@ -1,6 +1,6 @@
-// TODO: Put public facing types in this file.
+import 'package:dio/dio.dart';
 
-/// Checks if you are awesome. Spoiler: you are.
-class Awesome {
+class InfoMentor {
   bool loggedIn = false;
+  Dio? client;
 }
