@@ -8,14 +8,8 @@ void main() async {
   var pass = stdin.readLineSync() ?? "";
   // DEBUG
   //print('$user | $pass');
-  InfoMentor imObj;
-  imObj = await StockholmSTU().loginCredentials(user, pass);
-  var client = imObj.client;
-  client
-      ?.post(
-          "https://hub.infomentor.se/authentication/authentication/isauthenticated")
-      .then((value) {
-    print(
-        "https://hub.infomentor.se/authentication/authentication/isauthenticated -> ${value.data}");
-  });
+  InfoMentor client;
+  client = await StockholmSTU().loginCredentials(user, pass);
+  var isAuthenticated = await client.authentication?.isAuthenticated();
+  print(isAuthenticated ?? false);
 }

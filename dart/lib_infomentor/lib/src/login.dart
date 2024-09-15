@@ -92,11 +92,10 @@ class _Login {
 
 class StockholmSTU extends _Login {
   Future<InfoMentor> loginCredentials(String user, String password) async {
-    var imObj = InfoMentor();
     _loginInit();
     var samlResponse = await _loginToSSO(user, password);
     await _loginToIM(samlResponse);
-    imObj.client = super.client;
+    var imObj = InfoMentor(client: super.client);
     imObj.loggedIn = true;
     return Future.value(imObj);
   }
