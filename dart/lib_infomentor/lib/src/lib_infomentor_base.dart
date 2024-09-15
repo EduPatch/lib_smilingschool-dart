@@ -1,12 +1,16 @@
 import 'package:dio/dio.dart';
+import 'package:lib_infomentor/src/api/bindings/account.dart';
+import 'package:lib_infomentor/src/api/bindings/authentication.dart';
 
 class InfoMentor {
   bool loggedIn = false;
   Dio? client;
   Authentication? authentication;
+  Account? account;
 
   InfoMentor({required this.client}) {
     authentication = Authentication(client: client);
+    account = Account(client: client);
   }
 }
 
@@ -14,15 +18,4 @@ abstract class BaseAPI {
   Dio? client;
 
   BaseAPI({required this.client});
-}
-
-class Authentication extends BaseAPI {
-  Authentication({required super.client});
-
-  Future<bool> isAuthenticated() async {
-    var rs = await super.client?.post(
-        "https://hub.infomentor.se/authentication/authentication/isauthenticated");
-
-    return Future.value(bool.parse(rs?.data.toString() ?? ""));
-  }
 }
