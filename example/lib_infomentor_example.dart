@@ -12,4 +12,6 @@ void main() async {
   client = await StockholmSTU().loginCredentials(user, pass);
   var isAuthenticated = await client.authentication?.isAuthenticated();
   print(isAuthenticated ?? false);
+
+  print((await client.account?.preferencesAppData())?.privacyUrl);
 }
