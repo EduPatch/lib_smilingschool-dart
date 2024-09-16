@@ -1,7 +1,7 @@
 name: lib_infomentor
 description: A starting point for Dart libraries or applications.
 version: 0.1.0
-repository: https://github.com/edupatch/lib-infomentor/dart/lib-infomentor
+repository: https://github.com/edupatch/lib_infomentor-dart
 
 environment:
   sdk: ^3.4.3
