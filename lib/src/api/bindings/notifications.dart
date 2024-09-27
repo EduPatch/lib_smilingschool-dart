@@ -12,4 +12,19 @@ class Notifications extends BaseAPI {
         });
     return Future.value(NotificationsObject.fromJson(rs?.data));
   }
+
+  Future<UpdateNotificationResult> updateNotificationState(
+      List<int> ids, NotificationState state) async {
+    var rs = await super.client?.post(
+        "https://hub.infomentor.se/NotificationApp/NotificationApp/UpdateNotificationState",
+        data: {"ids": ids, "state": state});
+    return Future.value(UpdateNotificationResult.fromJson(rs?.data));
+  }
+
+  Future<NotificationsAppData> appData() async {
+    var rs = await super.client?.post(
+          "https://hub.infomentor.se/NotificationApp/NotificationApp/appData",
+        );
+    return Future.value(NotificationsAppData.fromJson(rs?.data));
+  }
 }

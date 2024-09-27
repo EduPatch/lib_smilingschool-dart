@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:lib_infomentor/lib_infomentor.dart';
+//import 'package:lib_infomentor/src/api/models/notifications.models.dart';
 
 void main() async {
   stdout.write("User >");
@@ -13,7 +14,15 @@ void main() async {
   var isAuthenticated = await client.authentication?.isAuthenticated();
   print(isAuthenticated ?? false);
 
-  print((await client.notifications?.getNotifications())?.toJson());
+  /*print((await client.notifications
+          ?.updateNotificationState([48572524], NotificationState.unread))
+      ?.toJson());
 
-  print((await client.account?.preferencesAppData())?.privacyUrl);
+  print((await client.notifications?.getNotifications())
+      ?.notifications
+      ?.first
+      .toJson());
+  print((await client.notifications?.appData())?.translations?.toJson());
+
+  print((await client.account?.preferencesAppData())?.privacyUrl);*/
 }
