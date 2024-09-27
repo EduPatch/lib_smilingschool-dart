@@ -1,4 +1,5 @@
 import 'dart:io';
+//import 'package:intl/intl.dart';
 import 'package:lib_infomentor/lib_infomentor.dart';
 //import 'package:lib_infomentor/src/api/models/notifications.models.dart';
 
@@ -13,6 +14,13 @@ void main() async {
   client = await StockholmSTU().loginCredentials(user, pass);
   var isAuthenticated = await client.authentication?.isAuthenticated();
   print(isAuthenticated ?? false);
+
+  /*print((await client.timetable?.getTimetableList(
+          -120,
+          DateTime.fromMillisecondsSinceEpoch(1727107913000),
+          DateTime.fromMillisecondsSinceEpoch(1727539913000)))
+      ?.first
+      .toJson());*/
 
   /*print((await client.notifications
           ?.updateNotificationState([48572524], NotificationState.unread))

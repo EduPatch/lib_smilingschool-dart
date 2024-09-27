@@ -10,6 +10,7 @@ environment:
 dependencies:
   dio: ^5.7.0
   dio_cookie_manager: ^3.1.1
+  intl: ^0.19.0
   json_annotation: ^4.9.0
 
 dev_dependencies:
