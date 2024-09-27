@@ -13,5 +13,7 @@ void main() async {
   var isAuthenticated = await client.authentication?.isAuthenticated();
   print(isAuthenticated ?? false);
 
+  print((await client.notifications?.getNotifications())?.toJson());
+
   print((await client.account?.preferencesAppData())?.privacyUrl);
 }
