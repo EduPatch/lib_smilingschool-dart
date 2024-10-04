@@ -4,7 +4,7 @@
 | Assessments    | 🔴     | Can't be implemented because there's no data |
 | Attendance     | ✅     |                                              |
 | Authentication | ✅      |                                              |
-| Communication  | 🔴     |                                              |
+| Communication  | ✅     |                                              |
 | Documentation  | 🔴     |                                              |
 | Notifications  | ✅      |                                              |
 | Resources      | ✅      |                                              |

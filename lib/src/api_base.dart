@@ -3,6 +3,7 @@ import 'package:lib_infomentor/src/api/bindings/account.dart';
 import 'package:lib_infomentor/src/api/bindings/attendance.dart';
 //import 'package:lib_infomentor/src/api/bindings/assessment.dart';
 import 'package:lib_infomentor/src/api/bindings/authentication.dart';
+import 'package:lib_infomentor/src/api/bindings/communication.dart';
 import 'package:lib_infomentor/src/api/bindings/notifications.dart';
 import 'package:lib_infomentor/src/api/bindings/resources.dart';
 import 'package:lib_infomentor/src/api/bindings/timetable.dart';
@@ -16,6 +17,7 @@ class InfoMentor {
   Timetable? timetable;
   Resource? resource;
   Attendance? attendance;
+  Communication? communication;
   //Assessment? assessment;
 
   InfoMentor({required this.client}) {
@@ -25,6 +27,7 @@ class InfoMentor {
     timetable = Timetable(client: client);
     resource = Resource(client: client);
     attendance = Attendance(client: client);
+    communication = Communication(client: client);
     //assessment = Assessment(client: client);
   }
 }
