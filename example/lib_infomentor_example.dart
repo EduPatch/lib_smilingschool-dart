@@ -1,5 +1,6 @@
 import 'dart:io';
 //import 'package:intl/intl.dart';
+import 'package:intl/intl.dart';
 import 'package:lib_infomentor/lib_infomentor.dart';
 //import 'package:lib_infomentor/src/api/models/notifications.models.dart';
 
@@ -33,4 +34,5 @@ void main() async {
   print((await client.notifications?.appData())?.translations?.toJson());
 
   print((await client.account?.preferencesAppData())?.privacyUrl);*/
+  print((await client.timetable?.appData())?.items?.first.startTime);
 }

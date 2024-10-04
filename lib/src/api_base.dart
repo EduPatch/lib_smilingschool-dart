@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:lib_infomentor/src/api/bindings/account.dart';
+import 'package:lib_infomentor/src/api/bindings/attendance.dart';
+//import 'package:lib_infomentor/src/api/bindings/assessment.dart';
 import 'package:lib_infomentor/src/api/bindings/authentication.dart';
 import 'package:lib_infomentor/src/api/bindings/notifications.dart';
 import 'package:lib_infomentor/src/api/bindings/resources.dart';
@@ -13,6 +15,8 @@ class InfoMentor {
   Notifications? notifications;
   Timetable? timetable;
   Resource? resource;
+  Attendance? attendance;
+  //Assessment? assessment;
 
   InfoMentor({required this.client}) {
     authentication = Authentication(client: client);
@@ -20,6 +24,8 @@ class InfoMentor {
     notifications = Notifications(client: client);
     timetable = Timetable(client: client);
     resource = Resource(client: client);
+    attendance = Attendance(client: client);
+    //assessment = Assessment(client: client);
   }
 }
 
