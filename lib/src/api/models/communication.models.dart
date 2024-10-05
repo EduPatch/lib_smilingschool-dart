@@ -295,3 +295,103 @@ class ConsentViewConfigTranslations {
       _$ConsentViewConfigTranslationsFromJson(json);
   Map<String, dynamic> toJson() => _$ConsentViewConfigTranslationsToJson(this);
 }
+
+// News Items
+@JsonSerializable()
+class CommunicationNewsList {
+  List<CommunicationNewsItem> items;
+
+  CommunicationNewsList(this.items);
+  factory CommunicationNewsList.fromJson(Map<String, dynamic> json) =>
+      _$CommunicationNewsListFromJson(json);
+  Map<String, dynamic> toJson() => _$CommunicationNewsListToJson(this);
+}
+
+@JsonSerializable()
+class CommunicationNewsItem {
+  int id;
+  String title,
+      content,
+      publishedDate,
+      publishedDateString,
+      publishedBy,
+      newsImageUrl,
+      newsThumbnailImageUrl;
+  List<dynamic>
+      attachments; // No data in list on response, will update when data is available!
+  CommunicationNewsItem(
+      this.id,
+      this.attachments,
+      this.title,
+      this.content,
+      this.publishedDate,
+      this.publishedDateString,
+      this.publishedBy,
+      this.newsImageUrl,
+      this.newsThumbnailImageUrl);
+  factory CommunicationNewsItem.fromJson(Map<String, dynamic> json) =>
+      _$CommunicationNewsItemFromJson(json);
+  Map<String, dynamic> toJson() => _$CommunicationNewsItemToJson(this);
+}
+
+// Links items
+
+@JsonSerializable()
+class CommunicationLinksList {
+  int totalItemCount;
+  List<CommunicationLinksItem> items;
+
+  CommunicationLinksList(this.items, this.totalItemCount);
+  factory CommunicationLinksList.fromJson(Map<String, dynamic> json) =>
+      _$CommunicationLinksListFromJson(json);
+  Map<String, dynamic> toJson() => _$CommunicationLinksListToJson(this);
+}
+
+@JsonSerializable()
+class CommunicationLinksItem {
+  int id;
+  String name, publishedBy, description, publishedDateString;
+  dynamic type;
+  Uri url;
+  DateTime publishedDate;
+
+  CommunicationLinksItem(this.id, this.description, this.name, this.publishedBy,
+      this.publishedDate, this.publishedDateString, this.type, this.url);
+  factory CommunicationLinksItem.fromJson(Map<String, dynamic> json) =>
+      _$CommunicationLinksItemFromJson(json);
+  Map<String, dynamic> toJson() => _$CommunicationLinksItemToJson(this);
+}
+
+// Documents Items
+
+@JsonSerializable()
+class CommunicationDocumentsList {
+  int totalItemCount;
+  List<CommunicationDocumentsItem> items;
+
+  CommunicationDocumentsList(this.items, this.totalItemCount);
+  factory CommunicationDocumentsList.fromJson(Map<String, dynamic> json) =>
+      _$CommunicationDocumentsListFromJson(json);
+  Map<String, dynamic> toJson() => _$CommunicationDocumentsListToJson(this);
+}
+
+@JsonSerializable()
+class CommunicationDocumentsItem {
+  int id, fileSize;
+  String title, type, publishedDateString, fileType;
+  String? description;
+  Uri fileUrl;
+
+  CommunicationDocumentsItem(
+      this.id,
+      this.description,
+      this.title,
+      this.publishedDateString,
+      this.type,
+      this.fileSize,
+      this.fileUrl,
+      this.fileType);
+  factory CommunicationDocumentsItem.fromJson(Map<String, dynamic> json) =>
+      _$CommunicationDocumentsItemFromJson(json);
+  Map<String, dynamic> toJson() => _$CommunicationDocumentsItemToJson(this);
+}

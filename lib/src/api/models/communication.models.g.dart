@@ -312,3 +312,131 @@ Map<String, dynamic> _$ConsentViewConfigTranslationsToJson(
       'commonCloseTabInstructions': instance.commonCloseTabInstructions,
       'new': instance.newWord,
     };
+
+CommunicationNewsList _$CommunicationNewsListFromJson(
+        Map<String, dynamic> json) =>
+    CommunicationNewsList(
+      (json['items'] as List<dynamic>)
+          .map((e) => CommunicationNewsItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$CommunicationNewsListToJson(
+        CommunicationNewsList instance) =>
+    <String, dynamic>{
+      'items': instance.items,
+    };
+
+CommunicationNewsItem _$CommunicationNewsItemFromJson(
+        Map<String, dynamic> json) =>
+    CommunicationNewsItem(
+      (json['id'] as num).toInt(),
+      json['attachments'] as List<dynamic>,
+      json['title'] as String,
+      json['content'] as String,
+      json['publishedDate'] as String,
+      json['publishedDateString'] as String,
+      json['publishedBy'] as String,
+      json['newsImageUrl'] as String,
+      json['newsThumbnailImageUrl'] as String,
+    );
+
+Map<String, dynamic> _$CommunicationNewsItemToJson(
+        CommunicationNewsItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'content': instance.content,
+      'publishedDate': instance.publishedDate,
+      'publishedDateString': instance.publishedDateString,
+      'publishedBy': instance.publishedBy,
+      'newsImageUrl': instance.newsImageUrl,
+      'newsThumbnailImageUrl': instance.newsThumbnailImageUrl,
+      'attachments': instance.attachments,
+    };
+
+CommunicationLinksList _$CommunicationLinksListFromJson(
+        Map<String, dynamic> json) =>
+    CommunicationLinksList(
+      (json['items'] as List<dynamic>)
+          .map(
+              (e) => CommunicationLinksItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      (json['totalItemCount'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$CommunicationLinksListToJson(
+        CommunicationLinksList instance) =>
+    <String, dynamic>{
+      'totalItemCount': instance.totalItemCount,
+      'items': instance.items,
+    };
+
+CommunicationLinksItem _$CommunicationLinksItemFromJson(
+        Map<String, dynamic> json) =>
+    CommunicationLinksItem(
+      (json['id'] as num).toInt(),
+      json['description'] as String,
+      json['name'] as String,
+      json['publishedBy'] as String,
+      DateTime.parse(json['publishedDate'] as String),
+      json['publishedDateString'] as String,
+      json['type'],
+      Uri.parse(json['url'] as String),
+    );
+
+Map<String, dynamic> _$CommunicationLinksItemToJson(
+        CommunicationLinksItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'publishedBy': instance.publishedBy,
+      'description': instance.description,
+      'publishedDateString': instance.publishedDateString,
+      'type': instance.type,
+      'url': instance.url.toString(),
+      'publishedDate': instance.publishedDate.toIso8601String(),
+    };
+
+CommunicationDocumentsList _$CommunicationDocumentsListFromJson(
+        Map<String, dynamic> json) =>
+    CommunicationDocumentsList(
+      (json['items'] as List<dynamic>)
+          .map((e) =>
+              CommunicationDocumentsItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      (json['totalItemCount'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$CommunicationDocumentsListToJson(
+        CommunicationDocumentsList instance) =>
+    <String, dynamic>{
+      'totalItemCount': instance.totalItemCount,
+      'items': instance.items,
+    };
+
+CommunicationDocumentsItem _$CommunicationDocumentsItemFromJson(
+        Map<String, dynamic> json) =>
+    CommunicationDocumentsItem(
+      (json['id'] as num).toInt(),
+      json['description'] as String?,
+      json['title'] as String,
+      json['publishedDateString'] as String,
+      json['type'] as String,
+      (json['fileSize'] as num).toInt(),
+      Uri.parse(json['fileUrl'] as String),
+      json['fileType'] as String,
+    );
+
+Map<String, dynamic> _$CommunicationDocumentsItemToJson(
+        CommunicationDocumentsItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'fileSize': instance.fileSize,
+      'title': instance.title,
+      'type': instance.type,
+      'publishedDateString': instance.publishedDateString,
+      'fileType': instance.fileType,
+      'description': instance.description,
+      'fileUrl': instance.fileUrl.toString(),
+    };
