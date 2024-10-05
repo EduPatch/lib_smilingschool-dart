@@ -33,7 +33,5 @@ void main() async {
   print((await client.notifications?.appData())?.translations?.toJson());
 
   print((await client.account?.preferencesAppData())?.privacyUrl);*/
-  print((await client.communication?.getDocumentsList(pageSize: 12))
-      ?.items
-      .length);
+  print((await client.documentation?.appData())?.tabs);
 }

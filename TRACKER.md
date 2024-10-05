@@ -5,7 +5,7 @@
 | Attendance     | ✅     |                                              |
 | Authentication | ✅      |                                              |
 | Communication  | ✅     |                                              |
-| Documentation  | 🔴     |                                              |
+| Documentation  | ✅     |                                              |
 | Notifications  | ✅      |                                              |
 | Resources      | ✅      |                                              |
 | Timetable      | ✅      |                                              |
