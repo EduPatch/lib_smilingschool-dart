@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'dart:developer';
 //import 'package:intl/intl.dart';
 import 'package:lib_infomentor/lib_infomentor.dart';
+import 'package:lib_infomentor/src/infomentor_driver.dart';
 //import 'package:lib_infomentor/src/api/models/notifications.models.dart';
 
 void main() async {
@@ -15,12 +17,14 @@ void main() async {
   var isAuthenticated = await client.authentication?.isAuthenticated();
   print(isAuthenticated ?? false);
 
-  /*print((await client.timetable?.getTimetableList(
-          -120,
-          DateTime.fromMillisecondsSinceEpoch(1727107913000),
-          DateTime.fromMillisecondsSinceEpoch(1727539913000)))
-      ?.first
-      .toJson());*/
+  var driver = InfoMentorDriver(client: client);
+
+  var timetableContext = driver.getTimetableContext();
+  if (timetableContext != null) {
+    var res = await timetableContext.getTimetable();
+	inspect(res);
+  }
+  return;
 
   /*print((await client.notifications
           ?.updateNotificationState([48572524], NotificationState.unread))
