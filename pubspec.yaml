@@ -1,13 +1,22 @@
 name: lib_infomentor
 description: A starting point for Dart libraries or applications.
-version: 0.1.0
+version: 1.0.0
 repository: https://github.com/edupatch/lib_infomentor-dart
+
+# We can't use this on the web because of CORS issues
+platforms:
+  android: 
+  ios:
+  linux:
+  macos:
+  windows:
 
 environment:
   sdk: ^3.4.3
 
 # Add regular dependencies here.
 dependencies:
+  cookie_jar: ^4.0.8
   dio: ^5.7.0
   dio_cookie_manager: ^3.1.1
   intl: ^0.19.0

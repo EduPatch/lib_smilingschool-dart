@@ -1,39 +1,45 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+## :warning: Disclaimer :warning:
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+We (edupatch) are ***not affiliated with or endorsed by Infomentor in any way***
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+# lib_infomentor
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+![Pub Version](https://img.shields.io/pub/v/lib_infomentor)
+
+
+Infomentor API client in Dart built using Dio and json_serializable
+
+Currently **web** is not supported because of CORS!
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Is **up to date** with the [Edupatch Infomentor API OpenAPI Spec](https://github.com/EduPatch/infomentor_api)
+- Converts all response data to **native dart types** to make usage easy!
+- You have **access to the underlying Dio client** in case you need to do special operations which the API is not capable of yet!
+- Every response object is serialized - use your response with **ease**!
+- Login systems are **modular** - switch em' all you want!
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+First add this package to your `pubspec.yaml`
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
+Next import the package and initialize a client
 ```dart
-const like = 'sample';
+import 'package:lib_infomentor/lib_infomentor.dart';
+
+void main() async {
+  var user = "USERNAME";
+  var pass = "PASSWORD";
+  InfoMentor client;
+  // We Stockholm Student as the example system here
+  client = await StockholmSTU().loginCredentials(user, pass);
+  // Look, here we use the endpoint isAuthenticated in the authentication category of the API!
+  var isAuthenticated = await client.authentication?.isAuthenticated();
+  // Outputs true if you're authenticated, or false if null or false
+  print(isAuthenticated ?? false);
+}
 ```
 
-## Additional information
+That's it! You're now up and running.
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+If you are wondering about endpoints or such, please refer to the [Edupatch Infomentor API OpenAPI Spec](https://github.com/EduPatch/infomentor_api)
