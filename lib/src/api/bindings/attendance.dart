@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:lib_infomentor/src/api/models/attendence.models.dart';
-import 'package:lib_infomentor/src/api_base.dart';
+import 'package:lib_smilingschool/src/api/models/attendence.models.dart';
+import 'package:lib_smilingschool/src/api_base.dart';
 
 class Attendance extends BaseAPI {
   Attendance({required super.client});

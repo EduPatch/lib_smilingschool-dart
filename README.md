@@ -2,18 +2,17 @@
 
 We (edupatch) are ***not affiliated with or endorsed by Infomentor in any way***
 
-# lib_infomentor
+# lib_smilingschool
 
-![Pub Version](https://img.shields.io/pub/v/lib_infomentor)
+![Pub Version](https://img.shields.io/pub/v/lib_smilingschool)
 
-
-Infomentor API client in Dart built using Dio and json_serializable
+Infomentor API client written in Dart and built using Dio and json_serializable
 
 Currently **web** is not supported because of CORS!
 
 ## Features
 
-- Is **up to date** with the [Edupatch Infomentor API OpenAPI Spec](https://github.com/EduPatch/infomentor_api)
+- Is **up to date** with the [Edupatch SmilingSchool API OpenAPI Spec](https://github.com/EduPatch/smilingschool_api)
 - Converts all response data to **native dart types** to make usage easy!
 - You have **access to the underlying Dio client** in case you need to do special operations which the API is not capable of yet!
 - Every response object is serialized - use your response with **ease**!
@@ -24,8 +23,9 @@ Currently **web** is not supported because of CORS!
 First add this package to your `pubspec.yaml`
 
 Next import the package and initialize a client
+
 ```dart
-import 'package:lib_infomentor/lib_infomentor.dart';
+import 'package:lib_smilingschool/lib_smilingschool.dart';
 
 void main() async {
   var user = "USERNAME";
@@ -42,4 +42,4 @@ void main() async {
 
 That's it! You're now up and running.
 
-If you are wondering about endpoints or such, please refer to the [Edupatch Infomentor API OpenAPI Spec](https://github.com/EduPatch/infomentor_api)
+If you are wondering about endpoints or such, please refer to the [Edupatch SmilingSchool API OpenAPI Spec](https://github.com/EduPatch/smilingschool_api)

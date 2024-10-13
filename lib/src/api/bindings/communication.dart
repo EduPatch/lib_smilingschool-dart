@@ -1,5 +1,5 @@
-import 'package:lib_infomentor/src/api/models/communication.models.dart';
-import 'package:lib_infomentor/src/api_base.dart';
+import 'package:lib_smilingschool/src/api/models/communication.models.dart';
+import 'package:lib_smilingschool/src/api_base.dart';
 
 class Communication extends BaseAPI {
   Communication({required super.client});

@@ -1,7 +1,7 @@
-name: lib_infomentor
+name: lib_smilingschool
 description: A starting point for Dart libraries or applications.
 version: 1.0.0
-repository: https://github.com/edupatch/lib_infomentor-dart
+repository: https://github.com/edupatch/lib_smilingschool-dart
 
 # We can't use this on the web because of CORS issues
 platforms:

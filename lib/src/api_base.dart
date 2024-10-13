@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
-import 'package:lib_infomentor/src/api/bindings/account.dart';
-import 'package:lib_infomentor/src/api/bindings/attendance.dart';
-//import 'package:lib_infomentor/src/api/bindings/assessment.dart';
-import 'package:lib_infomentor/src/api/bindings/authentication.dart';
-import 'package:lib_infomentor/src/api/bindings/communication.dart';
-import 'package:lib_infomentor/src/api/bindings/documentation.dart';
-import 'package:lib_infomentor/src/api/bindings/notifications.dart';
-import 'package:lib_infomentor/src/api/bindings/resources.dart';
-import 'package:lib_infomentor/src/api/bindings/timetable.dart';
+import 'package:lib_smilingschool/src/api/bindings/account.dart';
+import 'package:lib_smilingschool/src/api/bindings/attendance.dart';
+//import 'package:lib_smilingschool/src/api/bindings/assessment.dart';
+import 'package:lib_smilingschool/src/api/bindings/authentication.dart';
+import 'package:lib_smilingschool/src/api/bindings/communication.dart';
+import 'package:lib_smilingschool/src/api/bindings/documentation.dart';
+import 'package:lib_smilingschool/src/api/bindings/notifications.dart';
+import 'package:lib_smilingschool/src/api/bindings/resources.dart';
+import 'package:lib_smilingschool/src/api/bindings/timetable.dart';
 
 class InfoMentor {
   bool loggedIn = false;

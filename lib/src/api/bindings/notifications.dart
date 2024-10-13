@@ -1,5 +1,5 @@
-import 'package:lib_infomentor/src/api/models/notifications.models.dart';
-import 'package:lib_infomentor/src/api_base.dart';
+import 'package:lib_smilingschool/src/api/models/notifications.models.dart';
+import 'package:lib_smilingschool/src/api_base.dart';
 
 class Notifications extends BaseAPI {
   Notifications({required super.client});

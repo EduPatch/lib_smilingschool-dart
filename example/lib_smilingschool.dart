@@ -1,7 +1,7 @@
 import 'dart:io';
 //import 'package:intl/intl.dart';
-import 'package:lib_infomentor/lib_infomentor.dart';
-//import 'package:lib_infomentor/src/api/models/notifications.models.dart';
+import 'package:lib_smilingschool/smilingschool.dart';
+//import 'package:lib_smilingschool/src/api/models/notifications.models.dart';
 
 void main() async {
   stdout.write("User >");

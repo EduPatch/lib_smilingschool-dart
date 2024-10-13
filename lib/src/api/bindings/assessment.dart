@@ -1,4 +1,4 @@
-import 'package:lib_infomentor/src/api_base.dart';
+import 'package:lib_smilingschool/src/api_base.dart';
 
 class Assessment extends BaseAPI {
   Assessment({required super.client});
