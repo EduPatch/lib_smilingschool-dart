@@ -5,7 +5,7 @@
 */
 
 import 'dart:io';
-import 'package:lib_smilingschool/smilingschool.dart';
+import 'package:lib_smilingschool/lib_smilingschool.dart';
 
 void main() async {
   stdout.write("User >");

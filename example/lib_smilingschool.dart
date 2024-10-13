@@ -1,6 +1,6 @@
 import 'dart:io';
 //import 'package:intl/intl.dart';
-import 'package:lib_smilingschool/smilingschool.dart';
+import 'package:lib_smilingschool/lib_smilingschool.dart';
 //import 'package:lib_smilingschool/src/api/models/notifications.models.dart';
 
 void main() async {
