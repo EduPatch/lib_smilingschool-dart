@@ -1,5 +1,5 @@
 name: lib_smilingschool
-description: A starting point for Dart libraries or applications.
+description: An Infomentor API client written in Dart
 version: 1.0.0
 repository: https://github.com/edupatch/lib_smilingschool-dart
 
@@ -14,7 +14,6 @@ platforms:
 environment:
   sdk: ^3.4.3
 
-# Add regular dependencies here.
 dependencies:
   cookie_jar: ^4.0.8
   dio: ^5.7.0
