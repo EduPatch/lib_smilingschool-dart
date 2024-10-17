@@ -1,6 +1,6 @@
 name: lib_smilingschool
 description: An Infomentor API client written in Dart
-version: 1.0.0
+version: 1.1.0-pre.1
 repository: https://github.com/edupatch/lib_smilingschool-dart
 
 # We can't use this on the web because of CORS issues
