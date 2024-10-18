@@ -11,7 +11,7 @@ void main() async {
   // DEBUG
   //print('$user | $pass');
   InfoMentor client;
-  client = await StockholmSTU().loginCredentials(user, pass);
+  client = await UserPass().loginCredentials(user, pass);
   var isAuthenticated = await client.authentication?.isAuthenticated();
   print(isAuthenticated ?? false);
 
@@ -33,5 +33,5 @@ void main() async {
   print((await client.notifications?.appData())?.translations?.toJson());
 
   print((await client.account?.preferencesAppData())?.privacyUrl);*/
-  print((await client.documentation?.appData())?.tabs);
+  //print((await client.documentation?.appData())?.tabs);
 }
