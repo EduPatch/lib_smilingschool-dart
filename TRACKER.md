@@ -1,7 +1,7 @@
 | Name           | Status | Additional Comment                           |
 |----------------|--------|----------------------------------------------|
 | Account        | ✅      |                                              |
-| Assessments    | 🔴     | Can't be implemented because there's no data |
+| Assessments    | 🚧   | Can't be implemented because there's no data |
 | Attendance     | ✅     |                                              |
 | Authentication | ✅      |                                              |
 | Communication  | ✅     |                                              |
