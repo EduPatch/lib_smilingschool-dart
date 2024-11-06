@@ -2,6 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'assessment.models.g.dart';
 
+// APPDATA START
 @JsonSerializable()
 class AssessmentAppData {
   dynamic thirdSecurityInitData, gradeReportTerms;
@@ -14,6 +15,7 @@ class AssessmentAppData {
   AssessmentAppDataTranslations translations;
   AssessmentAppDataNavigationModel navigationModel;
   List<AssessmentAppDataAcademicYearItems> academicYearItems;
+  AssessmentAppDataUrls urls;
   AssessmentAppData(
       this.academicYearItems,
       this.thirdSecurityInitData,
@@ -22,7 +24,12 @@ class AssessmentAppData {
       this.enableSummaryAssessmentLgr22,
       this.isGymnasium,
       this.isImpersonator,
-      this.enableGradeReport);
+      this.enableGradeReport,
+      this.gradeReportTerms,
+      this.summaryAssessmentTerms,
+      this.summaryAssessmentTermsLgr22,
+      this.translations,
+      this.urls);
   factory AssessmentAppData.fromJson(Map<String, dynamic> json) =>
       _$AssessmentAppDataFromJson(json);
   Map<String, dynamic> toJson() => _$AssessmentAppDataToJson(this);
@@ -250,3 +257,63 @@ class AssessmentAppDataTranslations {
       _$AssessmentAppDataTranslationsFromJson(json);
   Map<String, dynamic> toJson() => _$AssessmentAppDataTranslationsToJson(this);
 }
+
+@JsonSerializable()
+class AssessmentAppDataUrls {
+  Uri getReportsDialog,
+      downloadReport,
+      getNavigationData,
+      getGridItems,
+      getGridDialog,
+      getGeneralComments,
+      getComments,
+      getUolItems,
+      getUolDialog,
+      getUolGeneralComments,
+      getTaskItems,
+      getTaskDialog,
+      getLearningStepItems,
+      getLearningStepDialog,
+      getSelfAssessmentItems,
+      getSelfAssessmentDialog,
+      saveMark,
+      saveComment,
+      deleteComment,
+      updateSelfAssessment,
+      updateNotificationState,
+      getSummaryAssessments,
+      getSummaryAssessmentsLgr22,
+      getSummaryAssessmentsForGym;
+
+  AssessmentAppDataUrls(
+      this.getReportsDialog,
+      this.downloadReport,
+      this.getNavigationData,
+      this.getGridItems,
+      this.getGridDialog,
+      this.getGeneralComments,
+      this.getComments,
+      this.getUolItems,
+      this.getUolDialog,
+      this.getUolGeneralComments,
+      this.getTaskItems,
+      this.getTaskDialog,
+      this.getLearningStepItems,
+      this.getLearningStepDialog,
+      this.getSelfAssessmentItems,
+      this.getSelfAssessmentDialog,
+      this.saveMark,
+      this.saveComment,
+      this.deleteComment,
+      this.updateSelfAssessment,
+      this.updateNotificationState,
+      this.getSummaryAssessments,
+      this.getSummaryAssessmentsLgr22,
+      this.getSummaryAssessmentsForGym);
+  factory AssessmentAppDataUrls.fromJson(Map<String, dynamic> json) =>
+      _$AssessmentAppDataUrlsFromJson(json);
+  Map<String, dynamic> toJson() => _$AssessmentAppDataUrlsToJson(this);
+}
+
+// APPDATA END
+
