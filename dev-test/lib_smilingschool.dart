@@ -3,6 +3,7 @@
 import 'dart:io';
 //import 'package:intl/intl.dart';
 import 'package:lib_smilingschool/lib_smilingschool.dart';
+import 'package:lib_smilingschool/src/api/bindings/assessment.dart';
 //import 'package:lib_smilingschool/src/api/models/notifications.models.dart';
 
 void main() async {
@@ -35,5 +36,8 @@ void main() async {
   print((await client.notifications?.appData())?.translations?.toJson());
 
   print((await client.account?.preferencesAppData())?.privacyUrl);*/
-  //print((await client.documentation?.appData())?.tabs);
+  print(
+      (await client.assessment?.appData(AssessmentAppDataTab.summaryAssessment))
+          ?.academicYearItems
+          .first);
 }

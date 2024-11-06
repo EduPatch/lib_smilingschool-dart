@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:lib_smilingschool/src/api/bindings/account.dart';
 import 'package:lib_smilingschool/src/api/bindings/attendance.dart';
-//import 'package:lib_smilingschool/src/api/bindings/assessment.dart';
+import 'package:lib_smilingschool/src/api/bindings/assessment.dart';
 import 'package:lib_smilingschool/src/api/bindings/authentication.dart';
 import 'package:lib_smilingschool/src/api/bindings/communication.dart';
 import 'package:lib_smilingschool/src/api/bindings/documentation.dart';
@@ -20,7 +20,7 @@ class InfoMentor {
   Attendance? attendance;
   Communication? communication;
   Documentation? documentation;
-  //Assessment? assessment;
+  Assessment? assessment;
 
   InfoMentor({required this.client}) {
     authentication = Authentication(client: client);
@@ -31,7 +31,7 @@ class InfoMentor {
     attendance = Attendance(client: client);
     communication = Communication(client: client);
     documentation = Documentation(client: client);
-    //assessment = Assessment(client: client);
+    assessment = Assessment(client: client);
   }
 }
 
