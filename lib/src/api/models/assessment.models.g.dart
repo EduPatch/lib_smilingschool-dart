@@ -333,3 +333,36 @@ Map<String, dynamic> _$AssessmentAppDataUrlsToJson(
       'getSummaryAssessmentsForGym':
           instance.getSummaryAssessmentsForGym.toString(),
     };
+
+AssessmentLgr22 _$AssessmentLgr22FromJson(Map<String, dynamic> json) =>
+    AssessmentLgr22(
+      (json['summaryAssessmentMarks'] as List<dynamic>)
+          .map((e) => AssessmentLgr22SummaryAssessmentMark.fromJson(
+              e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$AssessmentLgr22ToJson(AssessmentLgr22 instance) =>
+    <String, dynamic>{
+      'summaryAssessmentMarks': instance.summaryAssessmentMarks,
+    };
+
+AssessmentLgr22SummaryAssessmentMark
+    _$AssessmentLgr22SummaryAssessmentMarkFromJson(Map<String, dynamic> json) =>
+        AssessmentLgr22SummaryAssessmentMark(
+          (json['id'] as num).toInt(),
+          (json['markState'] as num).toInt(),
+          (json['groupedCompetenceId'] as num).toInt(),
+          json['subject'] as String,
+          json['hasMarks'] as bool,
+        );
+
+Map<String, dynamic> _$AssessmentLgr22SummaryAssessmentMarkToJson(
+        AssessmentLgr22SummaryAssessmentMark instance) =>
+    <String, dynamic>{
+      'subject': instance.subject,
+      'id': instance.id,
+      'markState': instance.markState,
+      'groupedCompetenceId': instance.groupedCompetenceId,
+      'hasMarks': instance.hasMarks,
+    };

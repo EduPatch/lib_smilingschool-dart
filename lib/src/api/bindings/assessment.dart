@@ -17,6 +17,13 @@ class Assessment extends BaseAPI {
         });
     return Future.value(AssessmentAppData.fromJson(rs?.data));
   }
+
+  Future<AssessmentLgr22> getSummaryAsessmentsLgr22(List<int> ids) async {
+    var rs = await super.client?.post(
+        "https://hub.infomentor.se/AssessmentV2/SummaryAssessments/GetSummaryAssessmentsLgr22",
+        queryParameters: {"termId": ids.join(",")});
+    return Future.value(AssessmentLgr22.fromJson(rs?.data));
+  }
 }
 
 enum AssessmentAppDataTab { summarylgr11, summaryAssessment, main, grades }

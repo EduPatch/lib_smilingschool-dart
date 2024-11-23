@@ -36,8 +36,13 @@ void main() async {
   print((await client.notifications?.appData())?.translations?.toJson());
 
   print((await client.account?.preferencesAppData())?.privacyUrl);*/
-  print(
+  /*print(
       (await client.assessment?.appData(AssessmentAppDataTab.summaryAssessment))
           ?.academicYearItems
-          .first);
+          .first);*/
+  print((await client.assessment
+          ?.getSummaryAsessmentsLgr22([325357, 325360, 325363]))
+      ?.summaryAssessmentMarks
+      .first
+      .subject);
 }

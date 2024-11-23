@@ -316,3 +316,30 @@ class AssessmentAppDataUrls {
 }
 
 // APPDATA END
+
+// GetSummaryAssessmentsLgr22 START
+
+@JsonSerializable()
+class AssessmentLgr22 {
+  List<AssessmentLgr22SummaryAssessmentMark> summaryAssessmentMarks;
+  AssessmentLgr22(this.summaryAssessmentMarks);
+  factory AssessmentLgr22.fromJson(Map<String, dynamic> json) =>
+      _$AssessmentLgr22FromJson(json);
+  Map<String, dynamic> toJson() => _$AssessmentLgr22ToJson(this);
+}
+
+@JsonSerializable()
+class AssessmentLgr22SummaryAssessmentMark {
+  String subject;
+  int id, markState, groupedCompetenceId;
+  bool hasMarks;
+  AssessmentLgr22SummaryAssessmentMark(this.id, this.markState,
+      this.groupedCompetenceId, this.subject, this.hasMarks);
+  factory AssessmentLgr22SummaryAssessmentMark.fromJson(
+          Map<String, dynamic> json) =>
+      _$AssessmentLgr22SummaryAssessmentMarkFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$AssessmentLgr22SummaryAssessmentMarkToJson(this);
+}
+
+// GetSummaryAssessmentsLgr22 END
