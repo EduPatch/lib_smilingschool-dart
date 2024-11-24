@@ -61,6 +61,14 @@ class Assessment extends BaseAPI {
         queryParameters: {"academicYearId": academicYearId.toString()});
     return Future.value(TaskAssessmentItem.fromJson(rs?.data));
   }
+
+  /// The statement ID is found in a statement item found in the response from eg. taskGetItems
+  Future<TaskGetDialog> taskGetDialog(int statementId) async {
+    var rs = await super.client?.post(
+        "https://hub.infomentor.se/AssessmentV2/AssessmentV2Task/GetDialog",
+        queryParameters: {"id": statementId});
+    return Future.value(TaskGetDialog.fromJson(rs?.data));
+  }
 }
 
 enum AssessmentAppDataTab { summarylgr11, summaryAssessment, main, grades }

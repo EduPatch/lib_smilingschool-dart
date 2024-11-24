@@ -510,7 +510,7 @@ SelfAssessmentStatementItemListItem
           json['latestGeneralCommentDate'] == null
               ? null
               : DateTime.parse(json['latestGeneralCommentDate'] as String),
-          json['mark'],
+          json['mark'] as String?,
           (json['markId'] as num?)?.toInt(),
           SelfAssessmentStatementItemListItem._markDateFromJson(
               json['markLastUpdated'] as String),
@@ -545,12 +545,12 @@ Map<String, dynamic> _$SelfAssessmentStatementItemListItemToJson(
       'markTextValue': instance.markTextValue,
       'markOptionColour': instance.markOptionColour,
       'latestGeneralComment': instance.latestGeneralComment,
+      'mark': instance.mark,
       'orderingDate': instance.orderingDate?.toIso8601String(),
       'latestGeneralCommentDate':
           instance.latestGeneralCommentDate?.toIso8601String(),
       'dateStamp': instance.dateStamp.toIso8601String(),
       'iconUrl': instance.iconUrl.toString(),
-      'mark': instance.mark,
       'markSchemeType': instance.markSchemeType,
       'hasComment': instance.hasComment,
       'hasEvidence': instance.hasEvidence,
@@ -572,7 +572,7 @@ SelfAssessment _$SelfAssessmentFromJson(Map<String, dynamic> json) =>
       json['hasValue'] as bool,
       Uri.parse(json['iconUrl'] as String),
       json['isBlankMark'] as bool,
-      json['mark'],
+      json['mark'] as String?,
       (json['markId'] as num?)?.toInt(),
       (json['markNumericValue'] as num?)?.toInt(),
       json['markOptionColour'] as String?,
@@ -644,7 +644,7 @@ TaskAssessmentStatementItemListItem
           json['latestGeneralCommentDate'] == null
               ? null
               : DateTime.parse(json['latestGeneralCommentDate'] as String),
-          json['mark'],
+          json['mark'] as String?,
           (json['markId'] as num?)?.toInt(),
           TaskAssessmentStatementItemListItem._markDateFromJson(
               json['markLastUpdated'] as String),
@@ -677,12 +677,12 @@ Map<String, dynamic> _$TaskAssessmentStatementItemListItemToJson(
       'latestGeneralComment': instance.latestGeneralComment,
       'text': instance.text,
       'markSchemeType': instance.markSchemeType,
+      'mark': instance.mark,
       'orderingDate': instance.orderingDate?.toIso8601String(),
       'latestGeneralCommentDate':
           instance.latestGeneralCommentDate?.toIso8601String(),
       'dateStamp': instance.dateStamp.toIso8601String(),
       'iconUrl': instance.iconUrl.toString(),
-      'mark': instance.mark,
       'hasComment': instance.hasComment,
       'hasEvidence': instance.hasEvidence,
       'isBlankMark': instance.isBlankMark,
@@ -693,4 +693,82 @@ Map<String, dynamic> _$TaskAssessmentStatementItemListItemToJson(
       'aspectType': instance.aspectType,
       'markLastUpdated': TaskAssessmentStatementItemListItem._markDateToJson(
           instance.markLastUpdated),
+    };
+
+TaskGetDialog _$TaskGetDialogFromJson(Map<String, dynamic> json) =>
+    TaskGetDialog(
+      TaskGetDialog._dateStampFromJson(json['dateStamp'] as String?),
+      json['evidence'] as List<dynamic>,
+      (json['groupedCompetenceId'] as num?)?.toInt(),
+      json['headerLabel'] as String,
+      (json['id'] as num).toInt(),
+      json['nameStamp'],
+      json['statements'] as List<dynamic>,
+      (json['summaryGroupedCellId'] as num?)?.toInt(),
+      json['text'] as String,
+      json['title'] as String?,
+      (json['marks'] as List<dynamic>)
+          .map((e) => TaskGetDialogMarkItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$TaskGetDialogToJson(TaskGetDialog instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'summaryGroupedCellId': instance.summaryGroupedCellId,
+      'groupedCompetenceId': instance.groupedCompetenceId,
+      'title': instance.title,
+      'text': instance.text,
+      'headerLabel': instance.headerLabel,
+      'dateStamp': TaskGetDialog._dateStampToJson(instance.dateStamp),
+      'nameStamp': instance.nameStamp,
+      'evidence': instance.evidence,
+      'statements': instance.statements,
+      'marks': instance.marks,
+    };
+
+TaskGetDialogMarkItem _$TaskGetDialogMarkItemFromJson(
+        Map<String, dynamic> json) =>
+    TaskGetDialogMarkItem(
+      (json['aspectId'] as num).toInt(),
+      json['comments'] as List<dynamic>,
+      DateTime.parse(json['dateModified'] as String),
+      TaskGetDialogMarkItem._dateStampFromJson(json['dateStamp'] as String?),
+      json['hasComment'] as bool,
+      json['hasValue'] as bool,
+      Uri.parse(json['iconUrl'] as String),
+      (json['id'] as num).toInt(),
+      json['isBlankMark'] as bool,
+      json['mark'] as String?,
+      (json['markNumericValue'] as num?)?.toInt(),
+      json['markOptionColour'] as String?,
+      (json['markOptionId'] as num).toInt(),
+      (json['markSchemeId'] as num).toInt(),
+      json['markSchemeType'] as String,
+      json['markTextValue'] as String,
+      json['nameStamp'] as String?,
+      json['statementText'] as String,
+    );
+
+Map<String, dynamic> _$TaskGetDialogMarkItemToJson(
+        TaskGetDialogMarkItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'aspectId': instance.aspectId,
+      'markOptionId': instance.markOptionId,
+      'markSchemeId': instance.markSchemeId,
+      'markNumericValue': instance.markNumericValue,
+      'markOptionColour': instance.markOptionColour,
+      'mark': instance.mark,
+      'nameStamp': instance.nameStamp,
+      'markSchemeType': instance.markSchemeType,
+      'markTextValue': instance.markTextValue,
+      'statementText': instance.statementText,
+      'dateStamp': TaskGetDialogMarkItem._dateStampToJson(instance.dateStamp),
+      'dateModified': instance.dateModified.toIso8601String(),
+      'comments': instance.comments,
+      'hasComment': instance.hasComment,
+      'hasValue': instance.hasValue,
+      'isBlankMark': instance.isBlankMark,
+      'iconUrl': instance.iconUrl.toString(),
     };

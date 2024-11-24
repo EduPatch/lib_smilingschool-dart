@@ -447,11 +447,11 @@ class AssessmentTemplateItem {
 class SelfAssessmentStatementItemListItem {
   int id, parentId, groupedCompetenceId, row, order, templateId;
   int? markId, markNumericValue;
-  String? markTextValue, markOptionColour, latestGeneralComment;
+  String? markTextValue, markOptionColour, latestGeneralComment, mark;
   DateTime? orderingDate, latestGeneralCommentDate;
   DateTime dateStamp;
   Uri iconUrl;
-  dynamic mark, markSchemeType;
+  dynamic markSchemeType;
   bool hasComment, hasEvidence, isBlankMark, showMark, isPublished, isLaroplan;
   String text, headerLabel, aspectType;
   SelfAssessment selfAssessment;
@@ -508,8 +508,8 @@ class SelfAssessment {
   Uri iconUrl;
   int? markId, markNumericValue;
   bool isBlankMark, hasComments, hasValue;
-  String? markTextValue, markOptionColour;
-  dynamic mark, markSchemeType;
+  String? markTextValue, markOptionColour, mark;
+  dynamic markSchemeType;
   SelfAssessment(
       this.hasComments,
       this.hasValue,
@@ -561,11 +561,11 @@ class TaskAssessmentStatementItemListItem {
       markOptionColour,
       latestGeneralComment,
       text,
-      markSchemeType;
+      markSchemeType,
+      mark;
   DateTime? orderingDate, latestGeneralCommentDate;
   DateTime dateStamp;
   Uri iconUrl;
-  dynamic mark;
   bool hasComment, hasEvidence, isBlankMark, showMark, isPublished, isLaroplan;
   String headerLabel, aspectType;
 
@@ -615,3 +615,91 @@ class TaskAssessmentStatementItemListItem {
 }
 
 // AssessmentTaskGetItems END
+
+// AssessmentTaskGetDialog START
+
+@JsonSerializable()
+class TaskGetDialog {
+  int id;
+  int? summaryGroupedCellId, groupedCompetenceId;
+  String? title;
+  String text, headerLabel;
+  @JsonKey(
+    toJson: _dateStampToJson,
+    fromJson: _dateStampFromJson,
+  )
+  DateTime? dateStamp;
+  dynamic nameStamp;
+  List<dynamic> evidence, statements;
+
+  List<TaskGetDialogMarkItem> marks;
+
+  TaskGetDialog(
+      this.dateStamp,
+      this.evidence,
+      this.groupedCompetenceId,
+      this.headerLabel,
+      this.id,
+      this.nameStamp,
+      this.statements,
+      this.summaryGroupedCellId,
+      this.text,
+      this.title,
+      this.marks);
+  factory TaskGetDialog.fromJson(Map<String, dynamic> json) =>
+      _$TaskGetDialogFromJson(json);
+  Map<String, dynamic> toJson() => _$TaskGetDialogToJson(this);
+
+  static DateTime? _dateStampFromJson(String? val) =>
+      val != "" ? DateFormat.yMd().parse(val ?? "1/1/1111") : null;
+  static String _dateStampToJson(DateTime? val) =>
+      val != null ? val.toString() : "";
+}
+
+@JsonSerializable()
+class TaskGetDialogMarkItem {
+  int id, aspectId, markOptionId, markSchemeId;
+  int? markNumericValue;
+  String? markOptionColour, mark, nameStamp;
+  String markSchemeType, markTextValue, statementText;
+  @JsonKey(
+    toJson: _dateStampToJson,
+    fromJson: _dateStampFromJson,
+  )
+  DateTime? dateStamp;
+  DateTime dateModified;
+  List<dynamic> comments;
+  bool hasComment, hasValue, isBlankMark;
+  Uri iconUrl;
+
+  TaskGetDialogMarkItem(
+      this.aspectId,
+      this.comments,
+      this.dateModified,
+      this.dateStamp,
+      this.hasComment,
+      this.hasValue,
+      this.iconUrl,
+      this.id,
+      this.isBlankMark,
+      this.mark,
+      this.markNumericValue,
+      this.markOptionColour,
+      this.markOptionId,
+      this.markSchemeId,
+      this.markSchemeType,
+      this.markTextValue,
+      this.nameStamp,
+      this.statementText);
+  factory TaskGetDialogMarkItem.fromJson(Map<String, dynamic> json) =>
+      _$TaskGetDialogMarkItemFromJson(json);
+  Map<String, dynamic> toJson() => _$TaskGetDialogMarkItemToJson(this);
+
+  static DateTime? _dateStampFromJson(String? val) =>
+      val != "" ? DateFormat.yMd().parse(val ?? "1/1/1111") : null;
+  static String _dateStampToJson(DateTime? val) =>
+      val != null ? val.toString() : "";
+}
+
+
+// AssessmentTaskGetDialog END
