@@ -440,12 +440,11 @@ SelfAssessmentItem _$SelfAssessmentItemFromJson(Map<String, dynamic> json) =>
               e as Map<String, dynamic>))
           .toList(),
       (json['parentItemsList'] as List<dynamic>)
-          .map((e) =>
-              SelfAssessmentParentItem.fromJson(e as Map<String, dynamic>))
+          .map((e) => AssessmentParentItem.fromJson(e as Map<String, dynamic>))
           .toList(),
       (json['templateItemsList'] as List<dynamic>)
-          .map((e) =>
-              SelfAssessmentTemplateItem.fromJson(e as Map<String, dynamic>))
+          .map(
+              (e) => AssessmentTemplateItem.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -461,32 +460,32 @@ Map<String, dynamic> _$SelfAssessmentItemToJson(SelfAssessmentItem instance) =>
       'templateItemsList': instance.templateItemsList,
     };
 
-SelfAssessmentParentItem _$SelfAssessmentParentItemFromJson(
+AssessmentParentItem _$AssessmentParentItemFromJson(
         Map<String, dynamic> json) =>
-    SelfAssessmentParentItem(
+    AssessmentParentItem(
       (json['id'] as num).toInt(),
       (json['parentId'] as num?)?.toInt(),
       json['title'] as String,
     );
 
-Map<String, dynamic> _$SelfAssessmentParentItemToJson(
-        SelfAssessmentParentItem instance) =>
+Map<String, dynamic> _$AssessmentParentItemToJson(
+        AssessmentParentItem instance) =>
     <String, dynamic>{
       'parentId': instance.parentId,
       'id': instance.id,
       'title': instance.title,
     };
 
-SelfAssessmentTemplateItem _$SelfAssessmentTemplateItemFromJson(
+AssessmentTemplateItem _$AssessmentTemplateItemFromJson(
         Map<String, dynamic> json) =>
-    SelfAssessmentTemplateItem(
+    AssessmentTemplateItem(
       (json['id'] as num).toInt(),
       (json['groupedSummaryCellId'] as num).toInt(),
       json['text'] as String,
     );
 
-Map<String, dynamic> _$SelfAssessmentTemplateItemToJson(
-        SelfAssessmentTemplateItem instance) =>
+Map<String, dynamic> _$AssessmentTemplateItemToJson(
+        AssessmentTemplateItem instance) =>
     <String, dynamic>{
       'id': instance.id,
       'groupedSummaryCellId': instance.groupedSummaryCellId,
@@ -593,4 +592,105 @@ Map<String, dynamic> _$SelfAssessmentToJson(SelfAssessment instance) =>
       'markOptionColour': instance.markOptionColour,
       'mark': instance.mark,
       'markSchemeType': instance.markSchemeType,
+    };
+
+TaskAssessmentItem _$TaskAssessmentItemFromJson(Map<String, dynamic> json) =>
+    TaskAssessmentItem(
+      (json['contextId'] as num).toInt(),
+      json['contextType'] as String,
+      json['hasNew'] as bool,
+      json['hasReports'] as bool,
+      json['title'] as String?,
+      (json['statementItemsList'] as List<dynamic>)
+          .map((e) => TaskAssessmentStatementItemListItem.fromJson(
+              e as Map<String, dynamic>))
+          .toList(),
+      (json['parentItemsList'] as List<dynamic>)
+          .map((e) => AssessmentParentItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      (json['templateItemsList'] as List<dynamic>)
+          .map(
+              (e) => AssessmentTemplateItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$TaskAssessmentItemToJson(TaskAssessmentItem instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+      'contextType': instance.contextType,
+      'hasNew': instance.hasNew,
+      'hasReports': instance.hasReports,
+      'contextId': instance.contextId,
+      'statementItemsList': instance.statementItemsList,
+      'parentItemsList': instance.parentItemsList,
+      'templateItemsList': instance.templateItemsList,
+    };
+
+TaskAssessmentStatementItemListItem
+    _$TaskAssessmentStatementItemListItemFromJson(Map<String, dynamic> json) =>
+        TaskAssessmentStatementItemListItem(
+          json['aspectType'] as String,
+          DateTime.parse(json['dateStamp'] as String),
+          (json['groupedCompetenceId'] as num?)?.toInt(),
+          json['hasComment'] as bool,
+          json['hasEvidence'] as bool,
+          json['headerLabel'] as String,
+          Uri.parse(json['iconUrl'] as String),
+          (json['id'] as num).toInt(),
+          json['isBlankMark'] as bool,
+          json['isLaroplan'] as bool,
+          json['isPublished'] as bool,
+          json['latestGeneralComment'] as String?,
+          json['latestGeneralCommentDate'] == null
+              ? null
+              : DateTime.parse(json['latestGeneralCommentDate'] as String),
+          json['mark'],
+          (json['markId'] as num?)?.toInt(),
+          TaskAssessmentStatementItemListItem._markDateFromJson(
+              json['markLastUpdated'] as String),
+          (json['markNumericValue'] as num?)?.toInt(),
+          json['markOptionColour'] as String?,
+          json['markSchemeType'] as String?,
+          json['markTextValue'] as String?,
+          (json['order'] as num).toInt(),
+          json['orderingDate'] == null
+              ? null
+              : DateTime.parse(json['orderingDate'] as String),
+          (json['parentId'] as num?)?.toInt(),
+          (json['row'] as num).toInt(),
+          json['showMark'] as bool,
+          json['text'] as String?,
+        );
+
+Map<String, dynamic> _$TaskAssessmentStatementItemListItemToJson(
+        TaskAssessmentStatementItemListItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'row': instance.row,
+      'order': instance.order,
+      'markId': instance.markId,
+      'markNumericValue': instance.markNumericValue,
+      'groupedCompetenceId': instance.groupedCompetenceId,
+      'parentId': instance.parentId,
+      'markTextValue': instance.markTextValue,
+      'markOptionColour': instance.markOptionColour,
+      'latestGeneralComment': instance.latestGeneralComment,
+      'text': instance.text,
+      'markSchemeType': instance.markSchemeType,
+      'orderingDate': instance.orderingDate?.toIso8601String(),
+      'latestGeneralCommentDate':
+          instance.latestGeneralCommentDate?.toIso8601String(),
+      'dateStamp': instance.dateStamp.toIso8601String(),
+      'iconUrl': instance.iconUrl.toString(),
+      'mark': instance.mark,
+      'hasComment': instance.hasComment,
+      'hasEvidence': instance.hasEvidence,
+      'isBlankMark': instance.isBlankMark,
+      'showMark': instance.showMark,
+      'isPublished': instance.isPublished,
+      'isLaroplan': instance.isLaroplan,
+      'headerLabel': instance.headerLabel,
+      'aspectType': instance.aspectType,
+      'markLastUpdated': TaskAssessmentStatementItemListItem._markDateToJson(
+          instance.markLastUpdated),
     };

@@ -49,6 +49,18 @@ class Assessment extends BaseAPI {
         queryParameters: {"academicYearId": academicYearId.toString()});
     return Future.value(SelfAssessmentItem.fromJson(rs?.data));
   }
+
+  /// The Academic year IDs are the ones from the AcademicYearItems parameter in the appData
+  /// Unsure if academic years are the same for all platforms, so for now there's no enum
+  ///
+  /// The taskId is an id of a task, not all systems have this feature enabled!
+  Future<TaskAssessmentItem> taskGetItems(
+      int taskId, int academicYearId) async {
+    var rs = await super.client?.post(
+        "https://hub.infomentor.se/AssessmentV2/AssessmentV2Task/GetItems/$taskId",
+        queryParameters: {"academicYearId": academicYearId.toString()});
+    return Future.value(TaskAssessmentItem.fromJson(rs?.data));
+  }
 }
 
 enum AssessmentAppDataTab { summarylgr11, summaryAssessment, main, grades }

@@ -406,8 +406,8 @@ class SelfAssessmentItem {
   bool hasNew, hasReports;
   int contextId;
   List<SelfAssessmentStatementItemListItem> statementItemsList;
-  List<SelfAssessmentParentItem> parentItemsList;
-  List<SelfAssessmentTemplateItem> templateItemsList;
+  List<AssessmentParentItem> parentItemsList;
+  List<AssessmentTemplateItem> templateItemsList;
   SelfAssessmentItem(
       this.contextId,
       this.contextType,
@@ -423,24 +423,24 @@ class SelfAssessmentItem {
 }
 
 @JsonSerializable()
-class SelfAssessmentParentItem {
+class AssessmentParentItem {
   int? parentId;
   int id;
   String title;
-  SelfAssessmentParentItem(this.id, this.parentId, this.title);
-  factory SelfAssessmentParentItem.fromJson(Map<String, dynamic> json) =>
-      _$SelfAssessmentParentItemFromJson(json);
-  Map<String, dynamic> toJson() => _$SelfAssessmentParentItemToJson(this);
+  AssessmentParentItem(this.id, this.parentId, this.title);
+  factory AssessmentParentItem.fromJson(Map<String, dynamic> json) =>
+      _$AssessmentParentItemFromJson(json);
+  Map<String, dynamic> toJson() => _$AssessmentParentItemToJson(this);
 }
 
 @JsonSerializable()
-class SelfAssessmentTemplateItem {
+class AssessmentTemplateItem {
   int id, groupedSummaryCellId;
   String text;
-  SelfAssessmentTemplateItem(this.id, this.groupedSummaryCellId, this.text);
-  factory SelfAssessmentTemplateItem.fromJson(Map<String, dynamic> json) =>
-      _$SelfAssessmentTemplateItemFromJson(json);
-  Map<String, dynamic> toJson() => _$SelfAssessmentTemplateItemToJson(this);
+  AssessmentTemplateItem(this.id, this.groupedSummaryCellId, this.text);
+  factory AssessmentTemplateItem.fromJson(Map<String, dynamic> json) =>
+      _$AssessmentTemplateItemFromJson(json);
+  Map<String, dynamic> toJson() => _$AssessmentTemplateItemToJson(this);
 }
 
 @JsonSerializable()
@@ -498,7 +498,7 @@ class SelfAssessmentStatementItemListItem {
       _$SelfAssessmentStatementItemListItemToJson(this);
 
   static DateTime? _markDateFromJson(String val) =>
-      val != "" ? DateTime.parse(val) : null;
+      val != "" ? DateFormat.yMd().parse(val) : null;
   static String _markDateToJson(DateTime? val) =>
       val != null ? val.toString() : "";
 }
@@ -527,3 +527,91 @@ class SelfAssessment {
 }
 
 // SelfAssessmentGetItems END
+
+// AssessmentTaskGetItems START
+
+@JsonSerializable()
+class TaskAssessmentItem {
+  String? title;
+  String contextType;
+  bool hasNew, hasReports;
+  int contextId;
+  List<TaskAssessmentStatementItemListItem> statementItemsList;
+  List<AssessmentParentItem> parentItemsList;
+  List<AssessmentTemplateItem> templateItemsList;
+  TaskAssessmentItem(
+      this.contextId,
+      this.contextType,
+      this.hasNew,
+      this.hasReports,
+      this.title,
+      this.statementItemsList,
+      this.parentItemsList,
+      this.templateItemsList);
+  factory TaskAssessmentItem.fromJson(Map<String, dynamic> json) =>
+      _$TaskAssessmentItemFromJson(json);
+  Map<String, dynamic> toJson() => _$TaskAssessmentItemToJson(this);
+}
+
+@JsonSerializable()
+class TaskAssessmentStatementItemListItem {
+  int id, row, order;
+  int? markId, markNumericValue, groupedCompetenceId, parentId;
+  String? markTextValue,
+      markOptionColour,
+      latestGeneralComment,
+      text,
+      markSchemeType;
+  DateTime? orderingDate, latestGeneralCommentDate;
+  DateTime dateStamp;
+  Uri iconUrl;
+  dynamic mark;
+  bool hasComment, hasEvidence, isBlankMark, showMark, isPublished, isLaroplan;
+  String headerLabel, aspectType;
+
+  @JsonKey(
+    toJson: _markDateToJson,
+    fromJson: _markDateFromJson,
+  )
+  DateTime? markLastUpdated;
+
+  TaskAssessmentStatementItemListItem(
+      this.aspectType,
+      this.dateStamp,
+      this.groupedCompetenceId,
+      this.hasComment,
+      this.hasEvidence,
+      this.headerLabel,
+      this.iconUrl,
+      this.id,
+      this.isBlankMark,
+      this.isLaroplan,
+      this.isPublished,
+      this.latestGeneralComment,
+      this.latestGeneralCommentDate,
+      this.mark,
+      this.markId,
+      this.markLastUpdated,
+      this.markNumericValue,
+      this.markOptionColour,
+      this.markSchemeType,
+      this.markTextValue,
+      this.order,
+      this.orderingDate,
+      this.parentId,
+      this.row,
+      this.showMark,
+      this.text);
+  factory TaskAssessmentStatementItemListItem.fromJson(
+          Map<String, dynamic> json) =>
+      _$TaskAssessmentStatementItemListItemFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$TaskAssessmentStatementItemListItemToJson(this);
+
+  static DateTime? _markDateFromJson(String val) =>
+      val != "" ? DateFormat.yMd().parse(val) : null;
+  static String _markDateToJson(DateTime? val) =>
+      val != null ? val.toString() : "";
+}
+
+// AssessmentTaskGetItems END
