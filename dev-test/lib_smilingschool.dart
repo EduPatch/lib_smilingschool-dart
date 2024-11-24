@@ -3,7 +3,7 @@
 import 'dart:io';
 //import 'package:intl/intl.dart';
 import 'package:lib_smilingschool/lib_smilingschool.dart';
-import 'package:lib_smilingschool/src/api/bindings/assessment.dart';
+//import 'package:lib_smilingschool/src/api/bindings/assessment.dart';
 //import 'package:lib_smilingschool/src/api/models/notifications.models.dart';
 
 void main() async {
@@ -40,9 +40,15 @@ void main() async {
       (await client.assessment?.appData(AssessmentAppDataTab.summaryAssessment))
           ?.academicYearItems
           .first);*/
-  print((await client.assessment
+  /*print((await client.assessment
           ?.getSummaryAsessmentsLgr22([325357, 325360, 325363]))
       ?.summaryAssessmentMarks
       .first
-      .subject);
+      .subject);*/
+  /*print((await client.assessment?.getNavigationItems(331883))
+      ?.selfAssessmentItemsList
+      .first
+      .title);*/
+  /*print((await client.assessment?.selfAssessmentGetItems(7406587, 331883))
+      ?.title);*/
 }

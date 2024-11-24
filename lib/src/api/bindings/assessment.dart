@@ -18,11 +18,36 @@ class Assessment extends BaseAPI {
     return Future.value(AssessmentAppData.fromJson(rs?.data));
   }
 
-  Future<AssessmentLgr22> getSummaryAsessmentsLgr22(List<int> ids) async {
+  /// The IDs are the ones from the AcademicYearItems parameter in the appData
+  /// Unsure if academic years are the same for all platforms, so for now there's no enum
+  Future<AssessmentLgr22> getSummaryAsessmentsLgr22(
+      List<int> academicYearIds) async {
     var rs = await super.client?.post(
         "https://hub.infomentor.se/AssessmentV2/SummaryAssessments/GetSummaryAssessmentsLgr22",
-        queryParameters: {"termId": ids.join(",")});
+        queryParameters: {"termId": academicYearIds.join(",")});
     return Future.value(AssessmentLgr22.fromJson(rs?.data));
+  }
+
+  /// The ID is the ones from the AcademicYearItems parameter in the appData
+  /// Unsure if academic years are the same for all platforms, so for now there's no enum
+  Future<AssessmentAppDataNavigationModel> getNavigationItems(
+      int academicYearId) async {
+    var rs = await super.client?.post(
+        "https://hub.infomentor.se/AssessmentV2/AssessmentV2/GetNavigationItems",
+        queryParameters: {"academicYearId": academicYearId.toString()});
+    return Future.value(AssessmentAppDataNavigationModel.fromJson(rs?.data));
+  }
+
+  /// The Academic year IDs are the ones from the AcademicYearItems parameter in the appData
+  /// Unsure if academic years are the same for all platforms, so for now there's no enum
+  ///
+  /// The selfAssessmentId is an id of a self assessment, not all systems have this feature enabled!
+  Future<SelfAssessmentItem> selfAssessmentGetItems(
+      int selfAssessmentId, int academicYearId) async {
+    var rs = await super.client?.post(
+        "https://hub.infomentor.se/AssessmentV2/AssessmentV2SelfAssessment/GetItems/$selfAssessmentId",
+        queryParameters: {"academicYearId": academicYearId.toString()});
+    return Future.value(SelfAssessmentItem.fromJson(rs?.data));
   }
 }
 

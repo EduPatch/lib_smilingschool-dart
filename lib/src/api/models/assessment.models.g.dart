@@ -49,9 +49,16 @@ AssessmentAppDataNavigationModel _$AssessmentAppDataNavigationModelFromJson(
         Map<String, dynamic> json) =>
     AssessmentAppDataNavigationModel(
       json['uolItemsList'] as List<dynamic>,
-      json['gridItemsList'] as List<dynamic>,
-      json['selfAssessmentItemsList'] as List<dynamic>,
-      json['navigationItemsList'] as List<dynamic>,
+      (json['gridItemsList'] as List<dynamic>)
+          .map((e) => AssessmentGridItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      (json['selfAssessmentItemsList'] as List<dynamic>)
+          .map((e) => AssessmentGridItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      (json['navigationItemsList'] as List<dynamic>)
+          .map((e) =>
+              AssessmentNavigationItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$AssessmentAppDataNavigationModelToJson(
@@ -365,4 +372,225 @@ Map<String, dynamic> _$AssessmentLgr22SummaryAssessmentMarkToJson(
       'markState': instance.markState,
       'groupedCompetenceId': instance.groupedCompetenceId,
       'hasMarks': instance.hasMarks,
+    };
+
+AssessmentGridItem _$AssessmentGridItemFromJson(Map<String, dynamic> json) =>
+    AssessmentGridItem(
+      json['hasNew'] as bool,
+      (json['id'] as num).toInt(),
+      json['title'] as String,
+    );
+
+Map<String, dynamic> _$AssessmentGridItemToJson(AssessmentGridItem instance) =>
+    <String, dynamic>{
+      'hasNew': instance.hasNew,
+      'title': instance.title,
+      'id': instance.id,
+    };
+
+AssessmentNavigationItem _$AssessmentNavigationItemFromJson(
+        Map<String, dynamic> json) =>
+    AssessmentNavigationItem(
+      (json['id'] as num).toInt(),
+      json['title'] as String,
+      json['hasGrids'] as bool,
+      json['hasLearningSteps'] as bool,
+      json['hasNewLearningStep'] as bool,
+      json['hasNewSelfAssessment'] as bool,
+      json['hasNewTask'] as bool,
+      json['hasSelfAssessments'] as bool,
+      json['hasTasks'] as bool,
+      json['hasUols'] as bool,
+      json['isOtherAssessment'] as bool,
+      json['linkedGrids'] as List<dynamic>,
+      json['linkedLearningSteps'] as List<dynamic>,
+      json['linkedSelfAssessments'] as List<dynamic>,
+      json['linkedUols'] as List<dynamic>,
+    );
+
+Map<String, dynamic> _$AssessmentNavigationItemToJson(
+        AssessmentNavigationItem instance) =>
+    <String, dynamic>{
+      'linkedGrids': instance.linkedGrids,
+      'linkedLearningSteps': instance.linkedLearningSteps,
+      'linkedUols': instance.linkedUols,
+      'linkedSelfAssessments': instance.linkedSelfAssessments,
+      'isOtherAssessment': instance.isOtherAssessment,
+      'hasGrids': instance.hasGrids,
+      'hasUols': instance.hasUols,
+      'hasSelfAssessments': instance.hasSelfAssessments,
+      'hasTasks': instance.hasTasks,
+      'hasNewTask': instance.hasNewTask,
+      'hasLearningSteps': instance.hasLearningSteps,
+      'hasNewLearningStep': instance.hasNewLearningStep,
+      'hasNewSelfAssessment': instance.hasNewSelfAssessment,
+      'title': instance.title,
+      'id': instance.id,
+    };
+
+SelfAssessmentItem _$SelfAssessmentItemFromJson(Map<String, dynamic> json) =>
+    SelfAssessmentItem(
+      (json['contextId'] as num).toInt(),
+      json['contextType'] as String,
+      json['hasNew'] as bool,
+      json['hasReports'] as bool,
+      json['title'] as String,
+      (json['statementItemsList'] as List<dynamic>)
+          .map((e) => SelfAssessmentStatementItemListItem.fromJson(
+              e as Map<String, dynamic>))
+          .toList(),
+      (json['parentItemsList'] as List<dynamic>)
+          .map((e) =>
+              SelfAssessmentParentItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      (json['templateItemsList'] as List<dynamic>)
+          .map((e) =>
+              SelfAssessmentTemplateItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$SelfAssessmentItemToJson(SelfAssessmentItem instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+      'contextType': instance.contextType,
+      'hasNew': instance.hasNew,
+      'hasReports': instance.hasReports,
+      'contextId': instance.contextId,
+      'statementItemsList': instance.statementItemsList,
+      'parentItemsList': instance.parentItemsList,
+      'templateItemsList': instance.templateItemsList,
+    };
+
+SelfAssessmentParentItem _$SelfAssessmentParentItemFromJson(
+        Map<String, dynamic> json) =>
+    SelfAssessmentParentItem(
+      (json['id'] as num).toInt(),
+      (json['parentId'] as num?)?.toInt(),
+      json['title'] as String,
+    );
+
+Map<String, dynamic> _$SelfAssessmentParentItemToJson(
+        SelfAssessmentParentItem instance) =>
+    <String, dynamic>{
+      'parentId': instance.parentId,
+      'id': instance.id,
+      'title': instance.title,
+    };
+
+SelfAssessmentTemplateItem _$SelfAssessmentTemplateItemFromJson(
+        Map<String, dynamic> json) =>
+    SelfAssessmentTemplateItem(
+      (json['id'] as num).toInt(),
+      (json['groupedSummaryCellId'] as num).toInt(),
+      json['text'] as String,
+    );
+
+Map<String, dynamic> _$SelfAssessmentTemplateItemToJson(
+        SelfAssessmentTemplateItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'groupedSummaryCellId': instance.groupedSummaryCellId,
+      'text': instance.text,
+    };
+
+SelfAssessmentStatementItemListItem
+    _$SelfAssessmentStatementItemListItemFromJson(Map<String, dynamic> json) =>
+        SelfAssessmentStatementItemListItem(
+          json['aspectType'] as String,
+          DateTime.parse(json['dateStamp'] as String),
+          (json['groupedCompetenceId'] as num).toInt(),
+          json['hasComment'] as bool,
+          json['hasEvidence'] as bool,
+          json['headerLabel'] as String,
+          Uri.parse(json['iconUrl'] as String),
+          (json['id'] as num).toInt(),
+          json['isBlankMark'] as bool,
+          json['isLaroplan'] as bool,
+          json['isPublished'] as bool,
+          json['latestGeneralComment'] as String?,
+          json['latestGeneralCommentDate'] == null
+              ? null
+              : DateTime.parse(json['latestGeneralCommentDate'] as String),
+          json['mark'],
+          (json['markId'] as num?)?.toInt(),
+          SelfAssessmentStatementItemListItem._markDateFromJson(
+              json['markLastUpdated'] as String),
+          (json['markNumericValue'] as num?)?.toInt(),
+          json['markOptionColour'] as String?,
+          json['markSchemeType'],
+          json['markTextValue'] as String?,
+          (json['order'] as num).toInt(),
+          json['orderingDate'] == null
+              ? null
+              : DateTime.parse(json['orderingDate'] as String),
+          (json['parentId'] as num).toInt(),
+          (json['row'] as num).toInt(),
+          SelfAssessment.fromJson(
+              json['selfAssessment'] as Map<String, dynamic>),
+          json['showMark'] as bool,
+          (json['templateId'] as num).toInt(),
+          json['text'] as String,
+        );
+
+Map<String, dynamic> _$SelfAssessmentStatementItemListItemToJson(
+        SelfAssessmentStatementItemListItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'parentId': instance.parentId,
+      'groupedCompetenceId': instance.groupedCompetenceId,
+      'row': instance.row,
+      'order': instance.order,
+      'templateId': instance.templateId,
+      'markId': instance.markId,
+      'markNumericValue': instance.markNumericValue,
+      'markTextValue': instance.markTextValue,
+      'markOptionColour': instance.markOptionColour,
+      'latestGeneralComment': instance.latestGeneralComment,
+      'orderingDate': instance.orderingDate?.toIso8601String(),
+      'latestGeneralCommentDate':
+          instance.latestGeneralCommentDate?.toIso8601String(),
+      'dateStamp': instance.dateStamp.toIso8601String(),
+      'iconUrl': instance.iconUrl.toString(),
+      'mark': instance.mark,
+      'markSchemeType': instance.markSchemeType,
+      'hasComment': instance.hasComment,
+      'hasEvidence': instance.hasEvidence,
+      'isBlankMark': instance.isBlankMark,
+      'showMark': instance.showMark,
+      'isPublished': instance.isPublished,
+      'isLaroplan': instance.isLaroplan,
+      'text': instance.text,
+      'headerLabel': instance.headerLabel,
+      'aspectType': instance.aspectType,
+      'selfAssessment': instance.selfAssessment,
+      'markLastUpdated': SelfAssessmentStatementItemListItem._markDateToJson(
+          instance.markLastUpdated),
+    };
+
+SelfAssessment _$SelfAssessmentFromJson(Map<String, dynamic> json) =>
+    SelfAssessment(
+      json['hasComments'] as bool,
+      json['hasValue'] as bool,
+      Uri.parse(json['iconUrl'] as String),
+      json['isBlankMark'] as bool,
+      json['mark'],
+      (json['markId'] as num?)?.toInt(),
+      (json['markNumericValue'] as num?)?.toInt(),
+      json['markOptionColour'] as String?,
+      json['markSchemeType'],
+      json['markTextValue'] as String?,
+    );
+
+Map<String, dynamic> _$SelfAssessmentToJson(SelfAssessment instance) =>
+    <String, dynamic>{
+      'iconUrl': instance.iconUrl.toString(),
+      'markId': instance.markId,
+      'markNumericValue': instance.markNumericValue,
+      'isBlankMark': instance.isBlankMark,
+      'hasComments': instance.hasComments,
+      'hasValue': instance.hasValue,
+      'markTextValue': instance.markTextValue,
+      'markOptionColour': instance.markOptionColour,
+      'mark': instance.mark,
+      'markSchemeType': instance.markSchemeType,
     };

@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'assessment.models.g.dart';
@@ -37,10 +38,9 @@ class AssessmentAppData {
 
 @JsonSerializable()
 class AssessmentAppDataNavigationModel {
-  List<dynamic> uolItemsList,
-      gridItemsList,
-      selfAssessmentItemsList,
-      navigationItemsList;
+  List<dynamic> uolItemsList;
+  List<AssessmentGridItem> gridItemsList, selfAssessmentItemsList;
+  List<AssessmentNavigationItem> navigationItemsList;
   AssessmentAppDataNavigationModel(this.uolItemsList, this.gridItemsList,
       this.selfAssessmentItemsList, this.navigationItemsList);
   factory AssessmentAppDataNavigationModel.fromJson(
@@ -343,3 +343,187 @@ class AssessmentLgr22SummaryAssessmentMark {
 }
 
 // GetSummaryAssessmentsLgr22 END
+
+// GetNavigationItems START
+
+// This is the same as selfAssessmentItem
+@JsonSerializable()
+class AssessmentGridItem {
+  bool hasNew;
+  String title;
+  int id;
+  AssessmentGridItem(this.hasNew, this.id, this.title);
+  factory AssessmentGridItem.fromJson(Map<String, dynamic> json) =>
+      _$AssessmentGridItemFromJson(json);
+  Map<String, dynamic> toJson() => _$AssessmentGridItemToJson(this);
+}
+
+@JsonSerializable()
+class AssessmentNavigationItem {
+  List<dynamic> linkedGrids,
+      linkedLearningSteps,
+      linkedUols,
+      linkedSelfAssessments;
+  bool isOtherAssessment,
+      hasGrids,
+      hasUols,
+      hasSelfAssessments,
+      hasTasks,
+      hasNewTask,
+      hasLearningSteps,
+      hasNewLearningStep,
+      hasNewSelfAssessment;
+  String title;
+  int id;
+  AssessmentNavigationItem(
+      this.id,
+      this.title,
+      this.hasGrids,
+      this.hasLearningSteps,
+      this.hasNewLearningStep,
+      this.hasNewSelfAssessment,
+      this.hasNewTask,
+      this.hasSelfAssessments,
+      this.hasTasks,
+      this.hasUols,
+      this.isOtherAssessment,
+      this.linkedGrids,
+      this.linkedLearningSteps,
+      this.linkedSelfAssessments,
+      this.linkedUols);
+  factory AssessmentNavigationItem.fromJson(Map<String, dynamic> json) =>
+      _$AssessmentNavigationItemFromJson(json);
+  Map<String, dynamic> toJson() => _$AssessmentNavigationItemToJson(this);
+}
+
+// GetNavigationItems END
+
+// SelfAssessmentGetItems START
+
+@JsonSerializable()
+class SelfAssessmentItem {
+  String title, contextType;
+  bool hasNew, hasReports;
+  int contextId;
+  List<SelfAssessmentStatementItemListItem> statementItemsList;
+  List<SelfAssessmentParentItem> parentItemsList;
+  List<SelfAssessmentTemplateItem> templateItemsList;
+  SelfAssessmentItem(
+      this.contextId,
+      this.contextType,
+      this.hasNew,
+      this.hasReports,
+      this.title,
+      this.statementItemsList,
+      this.parentItemsList,
+      this.templateItemsList);
+  factory SelfAssessmentItem.fromJson(Map<String, dynamic> json) =>
+      _$SelfAssessmentItemFromJson(json);
+  Map<String, dynamic> toJson() => _$SelfAssessmentItemToJson(this);
+}
+
+@JsonSerializable()
+class SelfAssessmentParentItem {
+  int? parentId;
+  int id;
+  String title;
+  SelfAssessmentParentItem(this.id, this.parentId, this.title);
+  factory SelfAssessmentParentItem.fromJson(Map<String, dynamic> json) =>
+      _$SelfAssessmentParentItemFromJson(json);
+  Map<String, dynamic> toJson() => _$SelfAssessmentParentItemToJson(this);
+}
+
+@JsonSerializable()
+class SelfAssessmentTemplateItem {
+  int id, groupedSummaryCellId;
+  String text;
+  SelfAssessmentTemplateItem(this.id, this.groupedSummaryCellId, this.text);
+  factory SelfAssessmentTemplateItem.fromJson(Map<String, dynamic> json) =>
+      _$SelfAssessmentTemplateItemFromJson(json);
+  Map<String, dynamic> toJson() => _$SelfAssessmentTemplateItemToJson(this);
+}
+
+@JsonSerializable()
+class SelfAssessmentStatementItemListItem {
+  int id, parentId, groupedCompetenceId, row, order, templateId;
+  int? markId, markNumericValue;
+  String? markTextValue, markOptionColour, latestGeneralComment;
+  DateTime? orderingDate, latestGeneralCommentDate;
+  DateTime dateStamp;
+  Uri iconUrl;
+  dynamic mark, markSchemeType;
+  bool hasComment, hasEvidence, isBlankMark, showMark, isPublished, isLaroplan;
+  String text, headerLabel, aspectType;
+  SelfAssessment selfAssessment;
+
+  @JsonKey(
+    toJson: _markDateToJson,
+    fromJson: _markDateFromJson,
+  )
+  DateTime? markLastUpdated;
+
+  SelfAssessmentStatementItemListItem(
+      this.aspectType,
+      this.dateStamp,
+      this.groupedCompetenceId,
+      this.hasComment,
+      this.hasEvidence,
+      this.headerLabel,
+      this.iconUrl,
+      this.id,
+      this.isBlankMark,
+      this.isLaroplan,
+      this.isPublished,
+      this.latestGeneralComment,
+      this.latestGeneralCommentDate,
+      this.mark,
+      this.markId,
+      this.markLastUpdated,
+      this.markNumericValue,
+      this.markOptionColour,
+      this.markSchemeType,
+      this.markTextValue,
+      this.order,
+      this.orderingDate,
+      this.parentId,
+      this.row,
+      this.selfAssessment,
+      this.showMark,
+      this.templateId,
+      this.text);
+  factory SelfAssessmentStatementItemListItem.fromJson(
+          Map<String, dynamic> json) =>
+      _$SelfAssessmentStatementItemListItemFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$SelfAssessmentStatementItemListItemToJson(this);
+
+  static DateTime? _markDateFromJson(String val) =>
+      val != "" ? DateTime.parse(val) : null;
+  static String _markDateToJson(DateTime? val) =>
+      val != null ? val.toString() : "";
+}
+
+@JsonSerializable()
+class SelfAssessment {
+  Uri iconUrl;
+  int? markId, markNumericValue;
+  bool isBlankMark, hasComments, hasValue;
+  String? markTextValue, markOptionColour;
+  dynamic mark, markSchemeType;
+  SelfAssessment(
+      this.hasComments,
+      this.hasValue,
+      this.iconUrl,
+      this.isBlankMark,
+      this.mark,
+      this.markId,
+      this.markNumericValue,
+      this.markOptionColour,
+      this.markSchemeType,
+      this.markTextValue);
+  factory SelfAssessment.fromJson(Map<String, dynamic> json) =>
+      _$SelfAssessmentFromJson(json);
+  Map<String, dynamic> toJson() => _$SelfAssessmentToJson(this);
+}
+
+// SelfAssessmentGetItems END
