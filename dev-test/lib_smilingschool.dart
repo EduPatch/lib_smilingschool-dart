@@ -53,4 +53,7 @@ void main() async {
       ?.title);*/
   /*print((await client.assessment?.taskGetItems(1003, 331883))?.contextType);*/
   /*print((await client.assessment?.taskGetDialog(5569396))?.text);*/
+  /*print(
+      (await client.assessment?.selfAssessmentGetDialog(7039067, 2074, 327286))
+          ?.text);*/
 }

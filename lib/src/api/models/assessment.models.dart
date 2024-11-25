@@ -701,5 +701,147 @@ class TaskGetDialogMarkItem {
       val != null ? val.toString() : "";
 }
 
-
 // AssessmentTaskGetDialog END
+
+// SelfAssessmentGetDialog START
+
+@JsonSerializable()
+class SelfAssessmentGetDialog {
+  int id, assessmentMarkId, aspectMarkSchemeId;
+  int? summaryGroupedCellId, groupedCompetenceId;
+  String? title;
+  String text, headerLabel, readOnlyMessage, decimalSeparator;
+  @JsonKey(
+    toJson: _dateStampToJson,
+    fromJson: _dateStampFromJson,
+  )
+  DateTime? dateStamp;
+  dynamic nameStamp;
+  bool isReadonly;
+  List<dynamic> evidence, statements, comments;
+
+  List<SelfAssessmentGetDialogMarkItem> marks;
+
+  SelfAssessmentGetDialog(
+      this.dateStamp,
+      this.evidence,
+      this.groupedCompetenceId,
+      this.headerLabel,
+      this.id,
+      this.nameStamp,
+      this.statements,
+      this.summaryGroupedCellId,
+      this.text,
+      this.title,
+      this.marks,
+      this.aspectMarkSchemeId,
+      this.assessmentMarkId,
+      this.comments,
+      this.decimalSeparator,
+      this.isReadonly,
+      this.readOnlyMessage);
+  factory SelfAssessmentGetDialog.fromJson(Map<String, dynamic> json) =>
+      _$SelfAssessmentGetDialogFromJson(json);
+  Map<String, dynamic> toJson() => _$SelfAssessmentGetDialogToJson(this);
+
+  static DateTime? _dateStampFromJson(String? val) =>
+      val != "" ? DateFormat.yMd().parse(val ?? "1/1/1111") : null;
+  static String _dateStampToJson(DateTime? val) =>
+      val != null ? val.toString() : "";
+}
+
+@JsonSerializable()
+class SelfAssessmentGetDialogMarkSchemeItem {
+  int id, markInterval, maximumMark, minimumMark;
+  bool isCurrentMarkScheme;
+  String title, markSchemeType;
+
+  List<SelfAssessmentGetDialogMarkSchemeOptionItem> markOptions;
+
+  SelfAssessmentGetDialogMarkSchemeItem(
+      this.id,
+      this.isCurrentMarkScheme,
+      this.markInterval,
+      this.markOptions,
+      this.markSchemeType,
+      this.maximumMark,
+      this.minimumMark,
+      this.title);
+  factory SelfAssessmentGetDialogMarkSchemeItem.fromJson(
+          Map<String, dynamic> json) =>
+      _$SelfAssessmentGetDialogMarkSchemeItemFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$SelfAssessmentGetDialogMarkSchemeItemToJson(this);
+}
+
+@JsonSerializable()
+class SelfAssessmentGetDialogMarkSchemeOptionItem {
+  int id, value, ordering, markSchemeId;
+  String label, colour;
+  Uri iconUrl;
+  String? altText;
+
+  SelfAssessmentGetDialogMarkSchemeOptionItem(
+      this.altText,
+      this.colour,
+      this.iconUrl,
+      this.id,
+      this.label,
+      this.markSchemeId,
+      this.ordering,
+      this.value);
+  factory SelfAssessmentGetDialogMarkSchemeOptionItem.fromJson(
+          Map<String, dynamic> json) =>
+      _$SelfAssessmentGetDialogMarkSchemeOptionItemFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$SelfAssessmentGetDialogMarkSchemeOptionItemToJson(this);
+}
+
+@JsonSerializable()
+class SelfAssessmentGetDialogMarkItem {
+  int id, aspectId, markOptionId, markSchemeId;
+  int? markNumericValue;
+  String? markOptionColour, mark, nameStamp;
+  String markSchemeType, markTextValue, statementText;
+  @JsonKey(
+    toJson: _dateStampToJson,
+    fromJson: _dateStampFromJson,
+  )
+  DateTime? dateStamp;
+  DateTime dateModified;
+  List<dynamic> comments;
+  bool hasComment, hasValue, isBlankMark;
+  Uri iconUrl;
+
+  SelfAssessmentGetDialogMarkItem(
+      this.aspectId,
+      this.comments,
+      this.dateModified,
+      this.dateStamp,
+      this.hasComment,
+      this.hasValue,
+      this.iconUrl,
+      this.id,
+      this.isBlankMark,
+      this.mark,
+      this.markNumericValue,
+      this.markOptionColour,
+      this.markOptionId,
+      this.markSchemeId,
+      this.markSchemeType,
+      this.markTextValue,
+      this.nameStamp,
+      this.statementText);
+  factory SelfAssessmentGetDialogMarkItem.fromJson(Map<String, dynamic> json) =>
+      _$SelfAssessmentGetDialogMarkItemFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$SelfAssessmentGetDialogMarkItemToJson(this);
+
+  static DateTime? _dateStampFromJson(String? val) =>
+      val != "" ? DateFormat.yMd().parse(val ?? "1/1/1111") : null;
+  static String _dateStampToJson(DateTime? val) =>
+      val != null ? val.toString() : "";
+}
+
+
+// SelfAssessmentGetDialog END

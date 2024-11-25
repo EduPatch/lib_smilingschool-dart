@@ -69,6 +69,22 @@ class Assessment extends BaseAPI {
         queryParameters: {"id": statementId});
     return Future.value(TaskGetDialog.fromJson(rs?.data));
   }
+
+  /// The itemId is the ID of the self assessment
+  /// The aspectId is the ID of the statementItem found in the response of eg. GetItems
+  /// The academicYearId is an id from the AcademicYearItems parameter in the appData
+  /// Unsure if academic years are the same for all platforms, so for now there's no enum
+  Future<SelfAssessmentGetDialog> selfAssessmentGetDialog(
+      int itemId, int aspectId, int academicYearId) async {
+    var rs = await super.client?.post(
+        "https://hub.infomentor.se/AssessmentV2/AssessmentV2SelfAssessment/GetDialog/",
+        queryParameters: {
+          "uol": itemId,
+          "aspectId": aspectId,
+          "academicYearId": academicYearId
+        });
+    return Future.value(SelfAssessmentGetDialog.fromJson(rs?.data));
+  }
 }
 
 enum AssessmentAppDataTab { summarylgr11, summaryAssessment, main, grades }

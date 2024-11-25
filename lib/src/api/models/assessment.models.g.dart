@@ -772,3 +772,155 @@ Map<String, dynamic> _$TaskGetDialogMarkItemToJson(
       'isBlankMark': instance.isBlankMark,
       'iconUrl': instance.iconUrl.toString(),
     };
+
+SelfAssessmentGetDialog _$SelfAssessmentGetDialogFromJson(
+        Map<String, dynamic> json) =>
+    SelfAssessmentGetDialog(
+      SelfAssessmentGetDialog._dateStampFromJson(json['dateStamp'] as String?),
+      json['evidence'] as List<dynamic>,
+      (json['groupedCompetenceId'] as num?)?.toInt(),
+      json['headerLabel'] as String,
+      (json['id'] as num).toInt(),
+      json['nameStamp'],
+      json['statements'] as List<dynamic>,
+      (json['summaryGroupedCellId'] as num?)?.toInt(),
+      json['text'] as String,
+      json['title'] as String?,
+      (json['marks'] as List<dynamic>)
+          .map((e) => SelfAssessmentGetDialogMarkItem.fromJson(
+              e as Map<String, dynamic>))
+          .toList(),
+      (json['aspectMarkSchemeId'] as num).toInt(),
+      (json['assessmentMarkId'] as num).toInt(),
+      json['comments'] as List<dynamic>,
+      json['decimalSeparator'] as String,
+      json['isReadonly'] as bool,
+      json['readOnlyMessage'] as String,
+    );
+
+Map<String, dynamic> _$SelfAssessmentGetDialogToJson(
+        SelfAssessmentGetDialog instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'assessmentMarkId': instance.assessmentMarkId,
+      'aspectMarkSchemeId': instance.aspectMarkSchemeId,
+      'summaryGroupedCellId': instance.summaryGroupedCellId,
+      'groupedCompetenceId': instance.groupedCompetenceId,
+      'title': instance.title,
+      'text': instance.text,
+      'headerLabel': instance.headerLabel,
+      'readOnlyMessage': instance.readOnlyMessage,
+      'decimalSeparator': instance.decimalSeparator,
+      'dateStamp': SelfAssessmentGetDialog._dateStampToJson(instance.dateStamp),
+      'nameStamp': instance.nameStamp,
+      'isReadonly': instance.isReadonly,
+      'evidence': instance.evidence,
+      'statements': instance.statements,
+      'comments': instance.comments,
+      'marks': instance.marks,
+    };
+
+SelfAssessmentGetDialogMarkSchemeItem
+    _$SelfAssessmentGetDialogMarkSchemeItemFromJson(
+            Map<String, dynamic> json) =>
+        SelfAssessmentGetDialogMarkSchemeItem(
+          (json['id'] as num).toInt(),
+          json['isCurrentMarkScheme'] as bool,
+          (json['markInterval'] as num).toInt(),
+          (json['markOptions'] as List<dynamic>)
+              .map((e) => SelfAssessmentGetDialogMarkSchemeOptionItem.fromJson(
+                  e as Map<String, dynamic>))
+              .toList(),
+          json['markSchemeType'] as String,
+          (json['maximumMark'] as num).toInt(),
+          (json['minimumMark'] as num).toInt(),
+          json['title'] as String,
+        );
+
+Map<String, dynamic> _$SelfAssessmentGetDialogMarkSchemeItemToJson(
+        SelfAssessmentGetDialogMarkSchemeItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'markInterval': instance.markInterval,
+      'maximumMark': instance.maximumMark,
+      'minimumMark': instance.minimumMark,
+      'isCurrentMarkScheme': instance.isCurrentMarkScheme,
+      'title': instance.title,
+      'markSchemeType': instance.markSchemeType,
+      'markOptions': instance.markOptions,
+    };
+
+SelfAssessmentGetDialogMarkSchemeOptionItem
+    _$SelfAssessmentGetDialogMarkSchemeOptionItemFromJson(
+            Map<String, dynamic> json) =>
+        SelfAssessmentGetDialogMarkSchemeOptionItem(
+          json['altText'] as String?,
+          json['colour'] as String,
+          Uri.parse(json['iconUrl'] as String),
+          (json['id'] as num).toInt(),
+          json['label'] as String,
+          (json['markSchemeId'] as num).toInt(),
+          (json['ordering'] as num).toInt(),
+          (json['value'] as num).toInt(),
+        );
+
+Map<String, dynamic> _$SelfAssessmentGetDialogMarkSchemeOptionItemToJson(
+        SelfAssessmentGetDialogMarkSchemeOptionItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'value': instance.value,
+      'ordering': instance.ordering,
+      'markSchemeId': instance.markSchemeId,
+      'label': instance.label,
+      'colour': instance.colour,
+      'iconUrl': instance.iconUrl.toString(),
+      'altText': instance.altText,
+    };
+
+SelfAssessmentGetDialogMarkItem _$SelfAssessmentGetDialogMarkItemFromJson(
+        Map<String, dynamic> json) =>
+    SelfAssessmentGetDialogMarkItem(
+      (json['aspectId'] as num).toInt(),
+      json['comments'] as List<dynamic>,
+      DateTime.parse(json['dateModified'] as String),
+      SelfAssessmentGetDialogMarkItem._dateStampFromJson(
+          json['dateStamp'] as String?),
+      json['hasComment'] as bool,
+      json['hasValue'] as bool,
+      Uri.parse(json['iconUrl'] as String),
+      (json['id'] as num).toInt(),
+      json['isBlankMark'] as bool,
+      json['mark'] as String?,
+      (json['markNumericValue'] as num?)?.toInt(),
+      json['markOptionColour'] as String?,
+      (json['markOptionId'] as num).toInt(),
+      (json['markSchemeId'] as num).toInt(),
+      json['markSchemeType'] as String,
+      json['markTextValue'] as String,
+      json['nameStamp'] as String?,
+      json['statementText'] as String,
+    );
+
+Map<String, dynamic> _$SelfAssessmentGetDialogMarkItemToJson(
+        SelfAssessmentGetDialogMarkItem instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'aspectId': instance.aspectId,
+      'markOptionId': instance.markOptionId,
+      'markSchemeId': instance.markSchemeId,
+      'markNumericValue': instance.markNumericValue,
+      'markOptionColour': instance.markOptionColour,
+      'mark': instance.mark,
+      'nameStamp': instance.nameStamp,
+      'markSchemeType': instance.markSchemeType,
+      'markTextValue': instance.markTextValue,
+      'statementText': instance.statementText,
+      'dateStamp':
+          SelfAssessmentGetDialogMarkItem._dateStampToJson(instance.dateStamp),
+      'dateModified': instance.dateModified.toIso8601String(),
+      'comments': instance.comments,
+      'hasComment': instance.hasComment,
+      'hasValue': instance.hasValue,
+      'isBlankMark': instance.isBlankMark,
+      'iconUrl': instance.iconUrl.toString(),
+    };
