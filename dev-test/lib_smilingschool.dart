@@ -3,6 +3,7 @@
 import 'dart:io';
 //import 'package:intl/intl.dart';
 import 'package:lib_smilingschool/lib_smilingschool.dart';
+//import 'package:lib_smilingschool/src/api/bindings/attendance.dart';
 //import 'package:lib_smilingschool/src/api/bindings/assessment.dart';
 //import 'package:lib_smilingschool/src/api/models/notifications.models.dart';
 
@@ -41,7 +42,7 @@ void main() async {
           ?.academicYearItems
           .first);*/
   /*print((await client.assessment
-          ?.getSummaryAsessmentsLgr22([325357, 325360, 325363]))
+          ?.getSummaryAssessmentsLgr22([325357, 325360, 325363]))
       ?.summaryAssessmentMarks
       .first
       .subject);*/
@@ -56,4 +57,10 @@ void main() async {
   /*print(
       (await client.assessment?.selfAssessmentGetDialog(7039067, 2074, 327286))
           ?.text);*/
+  // Should be working, did some tests but cannot guarantee it won't die on us in production
+  // <SpamixOfficial>
+  /*print((await client.attendance?.setSecondaryStatus(10695, true))?.success);*/
+  /*print((await client.attendance?.registerAttendance(
+          false, AttendanceDay.today, AttendanceAbsenceType.day))
+      ?.comment);*/
 }

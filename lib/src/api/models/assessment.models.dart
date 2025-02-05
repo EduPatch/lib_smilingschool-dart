@@ -498,7 +498,7 @@ class SelfAssessmentStatementItemListItem {
       _$SelfAssessmentStatementItemListItemToJson(this);
 
   static DateTime? _markDateFromJson(String val) =>
-      val != "" ? DateFormat.yMd().parse(val) : null;
+      val != "" ? DateFormat('dd/MM/yyyy').parse(val) : null;
   static String _markDateToJson(DateTime? val) =>
       val != null ? val.toString() : "";
 }
@@ -609,7 +609,7 @@ class TaskAssessmentStatementItemListItem {
       _$TaskAssessmentStatementItemListItemToJson(this);
 
   static DateTime? _markDateFromJson(String val) =>
-      val != "" ? DateFormat.yMd().parse(val) : null;
+      val != "" ? DateFormat('dd/MM/yyyy').parse(val) : null;
   static String _markDateToJson(DateTime? val) =>
       val != null ? val.toString() : "";
 }
@@ -651,7 +651,7 @@ class TaskGetDialog {
   Map<String, dynamic> toJson() => _$TaskGetDialogToJson(this);
 
   static DateTime? _dateStampFromJson(String? val) =>
-      val != "" ? DateFormat.yMd().parse(val ?? "1/1/1111") : null;
+      val != "" ? DateFormat('dd/MM/yyyy').parse(val ?? "1/1/1111") : null;
   static String _dateStampToJson(DateTime? val) =>
       val != null ? val.toString() : "";
 }
@@ -696,7 +696,7 @@ class TaskGetDialogMarkItem {
   Map<String, dynamic> toJson() => _$TaskGetDialogMarkItemToJson(this);
 
   static DateTime? _dateStampFromJson(String? val) =>
-      val != "" ? DateFormat.yMd().parse(val ?? "1/1/1111") : null;
+      val != "" ? DateFormat('dd/MM/yyyy').parse(val ?? "1/1/1111") : null;
   static String _dateStampToJson(DateTime? val) =>
       val != null ? val.toString() : "";
 }
@@ -745,7 +745,7 @@ class SelfAssessmentGetDialog {
   Map<String, dynamic> toJson() => _$SelfAssessmentGetDialogToJson(this);
 
   static DateTime? _dateStampFromJson(String? val) =>
-      val != "" ? DateFormat.yMd().parse(val ?? "1/1/1111") : null;
+      val != "" ? DateFormat('dd/MM/yyyy').parse(val ?? "1/1/1111") : null;
   static String _dateStampToJson(DateTime? val) =>
       val != null ? val.toString() : "";
 }
@@ -838,7 +838,7 @@ class SelfAssessmentGetDialogMarkItem {
       _$SelfAssessmentGetDialogMarkItemToJson(this);
 
   static DateTime? _dateStampFromJson(String? val) =>
-      val != "" ? DateFormat.yMd().parse(val ?? "1/1/1111") : null;
+      val != "" ? DateFormat('dd/MM/yyyy').parse(val ?? "1/1/1111") : null;
   static String _dateStampToJson(DateTime? val) =>
       val != null ? val.toString() : "";
 }

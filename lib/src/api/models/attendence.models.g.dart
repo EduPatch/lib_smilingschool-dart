@@ -450,7 +450,7 @@ AttendanceListItem _$AttendanceListItemFromJson(Map<String, dynamic> json) =>
       AttendanceListItem._minutesFromJson(json['minutes'] as String?),
       json['reason'] as String?,
       json['registeredByName'] as String?,
-      DateTime.parse(json['shortDate'] as String),
+      AttendanceListItem._dateFromJson(json['shortDate'] as String),
       json['subject'] as String?,
       AttendanceListItem._timeFromJson(json['time'] as String?),
     );
@@ -459,7 +459,7 @@ Map<String, dynamic> _$AttendanceListItemToJson(AttendanceListItem instance) =>
     <String, dynamic>{
       'id': instance.id,
       'minutes': AttendanceListItem._minutesToJson(instance.minutes),
-      'shortDate': instance.shortDate.toIso8601String(),
+      'shortDate': AttendanceListItem._dateToJson(instance.shortDate),
       'time': AttendanceListItem._timeToJson(instance.time),
       'longDate': instance.longDate,
       'reason': instance.reason,
@@ -468,4 +468,30 @@ Map<String, dynamic> _$AttendanceListItemToJson(AttendanceListItem instance) =>
       'registeredByName': instance.registeredByName,
       'establishmentName': instance.establishmentName,
       'halfDaysCount': instance.halfDaysCount,
+    };
+
+AttendanceSecondaryStatusResponse _$AttendanceSecondaryStatusResponseFromJson(
+        Map<String, dynamic> json) =>
+    AttendanceSecondaryStatusResponse(
+      json['success'] as bool,
+    );
+
+Map<String, dynamic> _$AttendanceSecondaryStatusResponseToJson(
+        AttendanceSecondaryStatusResponse instance) =>
+    <String, dynamic>{
+      'success': instance.success,
+    };
+
+AttendanceRegisterAttendanceResponse
+    _$AttendanceRegisterAttendanceResponseFromJson(Map<String, dynamic> json) =>
+        AttendanceRegisterAttendanceResponse(
+          json['success'] as bool,
+          json['comment'] as String,
+        );
+
+Map<String, dynamic> _$AttendanceRegisterAttendanceResponseToJson(
+        AttendanceRegisterAttendanceResponse instance) =>
+    <String, dynamic>{
+      'success': instance.success,
+      'comment': instance.comment,
     };

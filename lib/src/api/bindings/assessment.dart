@@ -20,7 +20,7 @@ class Assessment extends BaseAPI {
 
   /// The IDs are the ones from the AcademicYearItems parameter in the appData
   /// Unsure if academic years are the same for all platforms, so for now there's no enum
-  Future<AssessmentLgr22> getSummaryAsessmentsLgr22(
+  Future<AssessmentLgr22> getSummaryAssessmentsLgr22(
       List<int> academicYearIds) async {
     var rs = await super.client?.post(
         "https://hub.infomentor.se/AssessmentV2/SummaryAssessments/GetSummaryAssessmentsLgr22",

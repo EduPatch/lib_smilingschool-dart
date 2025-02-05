@@ -390,7 +390,12 @@ class AttendanceListItem {
   )
   final int? minutes;
 
+  @JsonKey(
+    toJson: _dateToJson,
+    fromJson: _dateFromJson,
+  )
   DateTime shortDate;
+
   @JsonKey(
     toJson: _timeToJson,
     fromJson: _timeFromJson,
@@ -427,9 +432,41 @@ class AttendanceListItem {
   static String? _timeToJson(DateTime? val) =>
       val != null ? DateFormat.Hm().format(val) : null;
 
+  static DateTime _dateFromJson(String val) =>
+      DateFormat('dd/MM/yyyy').parse(val);
+  static String _dateToJson(DateTime val) =>
+      DateFormat('dd/MM/yyyy').format(val);
+
   factory AttendanceListItem.fromJson(Map<String, dynamic> json) =>
       _$AttendanceListItemFromJson(json);
   Map<String, dynamic> toJson() => _$AttendanceListItemToJson(this);
 }
 
 // End of attendanceList object
+
+// Start of response for SetSecondaryStatus
+@JsonSerializable()
+class AttendanceSecondaryStatusResponse {
+  bool success;
+  AttendanceSecondaryStatusResponse(this.success);
+  factory AttendanceSecondaryStatusResponse.fromJson(
+          Map<String, dynamic> json) =>
+      _$AttendanceSecondaryStatusResponseFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$AttendanceSecondaryStatusResponseToJson(this);
+}
+// End of response for SetSecondaryStatus
+
+// Start of response for registerAttendance
+@JsonSerializable()
+class AttendanceRegisterAttendanceResponse {
+  bool success;
+  String comment;
+  AttendanceRegisterAttendanceResponse(this.success, this.comment);
+  factory AttendanceRegisterAttendanceResponse.fromJson(
+          Map<String, dynamic> json) =>
+      _$AttendanceRegisterAttendanceResponseFromJson(json);
+  Map<String, dynamic> toJson() =>
+      _$AttendanceRegisterAttendanceResponseToJson(this);
+}
+// End of response for registerAttendance

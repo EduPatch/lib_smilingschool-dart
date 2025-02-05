@@ -21,4 +21,49 @@ class Attendance extends BaseAPI {
     print(jsonEncode(rs?.data));
     return Future.value(AttendanceList.fromJson(rs?.data));
   }
+
+  /// Hello! This function was not possible to test due to some restrictions in our testing account.
+  /// If you find bugs please report them to our github!
+  ///
+  /// // Edupatch Team
+  Future<AttendanceSecondaryStatusResponse> setSecondaryStatus(
+      int id, bool approved) async {
+    var rs = await super.client?.post(
+        "https://hub.infomentor.se/attendance/attendance/SetSecondaryStatus",
+        data: {"id": id, "approved": approved});
+    return Future.value(AttendanceSecondaryStatusResponse.fromJson(rs?.data));
+  }
+
+  Future<AttendanceRegisterAttendanceResponse> registerAttendance(
+      bool present, AttendanceDay day, AttendanceAbsenceType type) async {
+    String dayAsString;
+    String typeAsString;
+
+    switch (day) {
+      case AttendanceDay.today:
+        dayAsString = 'today';
+      case AttendanceDay.tomorrow:
+        dayAsString = 'tomorrow';
+    }
+    switch (type) {
+      case AttendanceAbsenceType.day:
+        typeAsString = 'day';
+      case AttendanceAbsenceType.session:
+        typeAsString = 'session';
+    }
+    var rs = await super.client?.post(
+        "https://hub.infomentor.se/attendance/attendance/registerAttendance",
+        data: {
+          "present": present,
+          "day": dayAsString,
+          "RegType": typeAsString,
+          "canAddSicknessToTimeRegistration": false
+        });
+    return Future.value(
+        AttendanceRegisterAttendanceResponse.fromJson(rs?.data));
+  }
 }
+
+enum AttendanceDay { today, tomorrow }
+
+enum AttendanceAbsenceType { day, session }
