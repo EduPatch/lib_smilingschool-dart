@@ -30,7 +30,7 @@ class Attendance extends BaseAPI {
       int id, bool approved) async {
     var rs = await super.client?.post(
         "https://hub.infomentor.se/attendance/attendance/SetSecondaryStatus",
-        data: {"id": id, "approved": approved});
+        data: {"id": id, "isApproved": approved});
     return Future.value(AttendanceSecondaryStatusResponse.fromJson(rs?.data));
   }
 

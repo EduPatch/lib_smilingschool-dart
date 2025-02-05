@@ -59,7 +59,7 @@ void main() async {
           ?.text);*/
   // Should be working, did some tests but cannot guarantee it won't die on us in production
   // <SpamixOfficial>
-  /*print((await client.attendance?.setSecondaryStatus(10695, true))?.success);*/
+  /*print((await client.attendance?.setSecondaryStatus(10695, false))?.success);*/
   /*print((await client.attendance?.registerAttendance(
           false, AttendanceDay.today, AttendanceAbsenceType.day))
       ?.comment);*/
