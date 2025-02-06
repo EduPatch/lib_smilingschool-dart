@@ -18,6 +18,13 @@ class Calendar extends BaseAPI {
         });
     return Future.value(CalendarAppData.fromJson(rs?.data));
   }
+
+  Future<Uri> getIcalSubscriptionUri() async {
+    var rs = await super.client?.post(
+        "https://hub.infomentor.se/calendarv2/calendarv2/geticalsubscriptionuri");
+    var url = rs?.data.toString().replaceAll(RegExp(r'"'), '');
+    return Future.value(Uri.tryParse(url ?? "https://example.com"));
+  }
 }
 
 enum CalendarAppDataTab {
