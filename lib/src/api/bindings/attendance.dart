@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:lib_smilingschool/src/api/models/attendence.models.dart';
 import 'package:lib_smilingschool/src/api_base.dart';
 
@@ -18,7 +16,7 @@ class Attendance extends BaseAPI {
     // Just using defaults
     var rs = await super.client?.post(
         "https://hub.infomentor.se/attendance/attendance/GetAttendanceList");
-    print(jsonEncode(rs?.data));
+
     return Future.value(AttendanceList.fromJson(rs?.data));
   }
 
@@ -61,6 +59,15 @@ class Attendance extends BaseAPI {
         });
     return Future.value(
         AttendanceRegisterAttendanceResponse.fromJson(rs?.data));
+  }
+
+  Future<List<AttendanceLeaveRequest>> getLeaveRequestList() async {
+    var rs = await super.client?.post(
+        "https://hub.infomentor.se/attendance/attendance/GetLeaveRequestList");
+
+    return (rs?.data as List<dynamic>)
+        .map((val) => AttendanceLeaveRequest.fromJson(val))
+        .toList();
   }
 }
 

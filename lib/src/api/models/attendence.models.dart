@@ -470,3 +470,93 @@ class AttendanceRegisterAttendanceResponse {
       _$AttendanceRegisterAttendanceResponseToJson(this);
 }
 // End of response for registerAttendance
+
+// Start of LeaveRequest
+@JsonSerializable()
+class AttendanceLeaveRequest {
+  int id;
+  int? secondaryParentApproverId;
+  String dateRangeTitle,
+      status,
+      requesterComment,
+      createdBy,
+      approvedByTitle,
+      createdByTitle,
+      secondaryApprovalText,
+      secondaryParentStatus,
+      secondaryParentApprovalDateText;
+  String? approverComment, secondaryParentApproverName;
+  bool canDelete,
+      canApprove,
+      canDeny,
+      showDeleteButton,
+      showApproveButton,
+      showDenyButton,
+      isAwaitingResponseFromCurrentUser;
+
+  @JsonKey(
+    toJson: _timeToJson,
+    fromJson: _timeFromJson,
+  )
+  DateTime? toTime, fromTime;
+
+  @JsonKey(
+    toJson: _fullDateToJson,
+    fromJson: _fullDateFromJson,
+  )
+  DateTime? secondaryParentApprovalDate;
+
+  @JsonKey(
+    toJson: _dateToJson,
+    fromJson: _dateFromJson,
+  )
+  DateTime fromDate, toDate, updatedDate;
+
+  AttendanceLeaveRequest(
+      this.approvedByTitle,
+      this.approverComment,
+      this.canApprove,
+      this.canDelete,
+      this.canDeny,
+      this.createdBy,
+      this.createdByTitle,
+      this.dateRangeTitle,
+      this.fromDate,
+      this.fromTime,
+      this.id,
+      this.isAwaitingResponseFromCurrentUser,
+      this.requesterComment,
+      this.secondaryApprovalText,
+      this.secondaryParentApprovalDateText,
+      this.secondaryParentApprovalDate,
+      this.secondaryParentApproverId,
+      this.secondaryParentApproverName,
+      this.secondaryParentStatus,
+      this.showApproveButton,
+      this.showDeleteButton,
+      this.showDenyButton,
+      this.status,
+      this.toDate,
+      this.toTime,
+      this.updatedDate);
+
+  static DateTime? _timeFromJson(String? val) =>
+      val != null ? DateFormat.Hm().parse(val) : null;
+  static String? _timeToJson(DateTime? val) =>
+      val != null ? DateFormat.Hm().format(val) : null;
+
+  static DateTime _dateFromJson(String val) =>
+      DateFormat('dd/MM/yyyy').parse(val);
+  static String _dateToJson(DateTime val) =>
+      DateFormat('dd/MM/yyyy').format(val);
+
+  static DateTime? _fullDateFromJson(String? val) =>
+      val != null ? DateFormat('yyyy-MM-ddTHH:mm:ss.SSS').parse(val) : null;
+  static String? _fullDateToJson(DateTime? val) =>
+      val != null ? DateFormat('yyyy-MM-ddTHH:mm:ss.SSS').format(val) : null;
+
+  factory AttendanceLeaveRequest.fromJson(Map<String, dynamic> json) =>
+      _$AttendanceLeaveRequestFromJson(json);
+  Map<String, dynamic> toJson() => _$AttendanceLeaveRequestToJson(this);
+}
+// End of LeaveRequest

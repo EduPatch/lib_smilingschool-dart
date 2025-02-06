@@ -63,4 +63,5 @@ void main() async {
   /*print((await client.attendance?.registerAttendance(
           false, AttendanceDay.today, AttendanceAbsenceType.day))
       ?.comment);*/
+  /*print((await client.attendance?.getLeaveRequestList())?.first);*/
 }
