@@ -3,6 +3,7 @@
 import 'dart:io';
 //import 'package:intl/intl.dart';
 import 'package:lib_smilingschool/lib_smilingschool.dart';
+import 'package:lib_smilingschool/src/api/bindings/calendar.dart';
 //import 'package:lib_smilingschool/src/api/bindings/attendance.dart';
 //import 'package:lib_smilingschool/src/api/bindings/assessment.dart';
 //import 'package:lib_smilingschool/src/api/models/notifications.models.dart';
@@ -64,4 +65,6 @@ void main() async {
           false, AttendanceDay.today, AttendanceAbsenceType.day))
       ?.comment);*/
   /*print((await client.attendance?.getLeaveRequestList())?.first);*/
+  print((await client.calendar?.appData(CalendarAppDataTab.whole_week))
+      ?.todayDate);
 }

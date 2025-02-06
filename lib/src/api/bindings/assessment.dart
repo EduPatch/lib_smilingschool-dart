@@ -4,7 +4,8 @@ import 'package:lib_smilingschool/src/api_base.dart';
 class Assessment extends BaseAPI {
   Assessment({required super.client});
 
-  Future<AssessmentAppData> appData(AssessmentAppDataTab tab) async {
+  Future<AssessmentAppData> appData(AssessmentAppDataTab tab,
+      {int? since}) async {
     var rs = await super
         .client
         ?.post("https://hub.infomentor.se/assessmentv2/assessmentv2/appData",
@@ -13,7 +14,7 @@ class Assessment extends BaseAPI {
           "codename": "assessmentsv2",
           "tab": tab.toString(),
           "action": tab.toString(),
-          "_": 181020241502
+          "_": since
         });
     return Future.value(AssessmentAppData.fromJson(rs?.data));
   }

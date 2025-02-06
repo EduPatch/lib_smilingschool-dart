@@ -1,11 +1,14 @@
-| Name           | Status | Additional Comment                           |
-|----------------|--------|----------------------------------------------|
-| Account        | ✅      |                                              |
-| Assessments    | ✅   |  |
-| Attendance     | ✅     |                                              |
-| Authentication | ✅      |                                              |
-| Communication  | ✅     |                                              |
-| Documentation  | ✅     |                                              |
-| Notifications  | ✅      |                                              |
-| Resources      | ✅      |                                              |
-| Timetable      | ✅      |                                              |
+- [x] Account
+- [x] Assessment
+- [x] Attendance
+- [x] Authentication
+- [ ] Calendar
+- [ ] Classlist
+- [ ] Communication
+- [ ] Documentation
+- [ ] NotificationsApp
+- [ ] Resources
+- [ ] Task
+- [ ] Timeregistration
+- [ ] Timetable
+- [ ] Uol
