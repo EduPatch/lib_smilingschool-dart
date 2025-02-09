@@ -130,3 +130,65 @@ Map<String, dynamic> _$CalendarAppDataUrlsToJson(
       'getIcalSubscriptionUri': instance.getIcalSubscriptionUri.toString(),
       'getO365EventDescription': instance.getO365EventDescription.toString(),
     };
+
+CalendarEntry _$CalendarEntryFromJson(Map<String, dynamic> json) =>
+    CalendarEntry(
+      (json['calendarEntryTypeId'] as num).toInt(),
+      json['description'] as String,
+      (json['googleEventId'] as num?)?.toInt(),
+      json['hasAttachments'] as bool,
+      (json['id'] as num).toInt(),
+      (json['o365EventId'] as num?)?.toInt(),
+      json['text'] as String,
+      json['title'] as String,
+      json['url'] == null ? null : Uri.parse(json['url'] as String),
+      CalendarEntry._dateFromJson(json['endDate'] as String),
+      CalendarEntry._fullDateFromJson(json['endDateFull'] as String),
+      CalendarEntry._timeFromJson(json['endTime'] as String?),
+      json['formattedEndDate'] as String,
+      json['formattedStartDate'] as String,
+      CalendarEntry._dateFromJson(json['startDate'] as String),
+      CalendarEntry._fullDateFromJson(json['startDateFull'] as String),
+      CalendarEntry._timeFromJson(json['startTime'] as String?),
+      (json['subjects'] as List<dynamic>)
+          .map((e) => CalendarEntrySubject.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      json['courses'] as List<dynamic>,
+    );
+
+Map<String, dynamic> _$CalendarEntryToJson(CalendarEntry instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'calendarEntryTypeId': instance.calendarEntryTypeId,
+      'o365EventId': instance.o365EventId,
+      'googleEventId': instance.googleEventId,
+      'title': instance.title,
+      'text': instance.text,
+      'description': instance.description,
+      'formattedStartDate': instance.formattedStartDate,
+      'formattedEndDate': instance.formattedEndDate,
+      'url': instance.url?.toString(),
+      'hasAttachments': instance.hasAttachments,
+      'startDateFull': CalendarEntry._fullDateToJson(instance.startDateFull),
+      'endDateFull': CalendarEntry._fullDateToJson(instance.endDateFull),
+      'startDate': CalendarEntry._dateToJson(instance.startDate),
+      'endDate': CalendarEntry._dateToJson(instance.endDate),
+      'startTime': CalendarEntry._timeToJson(instance.startTime),
+      'endTime': CalendarEntry._timeToJson(instance.endTime),
+      'subjects': instance.subjects,
+      'courses': instance.courses,
+    };
+
+CalendarEntrySubject _$CalendarEntrySubjectFromJson(
+        Map<String, dynamic> json) =>
+    CalendarEntrySubject(
+      (json['id'] as num).toInt(),
+      json['title'] as String,
+    );
+
+Map<String, dynamic> _$CalendarEntrySubjectToJson(
+        CalendarEntrySubject instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+    };

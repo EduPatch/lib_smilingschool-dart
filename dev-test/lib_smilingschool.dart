@@ -1,6 +1,9 @@
 // file to test new endpoints implemented in json models
 
+// You can use this file as reference for using this module but doing this is not recommended :D
+
 import 'dart:io';
+//import 'package:intl/intl.dart';
 //import 'package:intl/intl.dart';
 import 'package:lib_smilingschool/lib_smilingschool.dart';
 //import 'package:lib_smilingschool/src/api/bindings/calendar.dart';
@@ -68,4 +71,8 @@ void main() async {
   /*print((await client.calendar?.appData(CalendarAppDataTab.whole_week))
       ?.todayDate);*/
   /*print((await client.calendar?.getIcalSubscriptionUri()));*/
+  /*print((await client.calendar?.getEntries(
+          DateFormat("yyyy/MM/dd").parse("2024/12/23"), DateTime.now()))
+      ?.first
+      .description);*/
 }

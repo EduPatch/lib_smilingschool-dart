@@ -120,3 +120,82 @@ class CalendarAppDataUrls {
       _$CalendarAppDataUrlsFromJson(json);
   Map<String, dynamic> toJson() => _$CalendarAppDataUrlsToJson(this);
 }
+
+// End of CalendarAppdata
+
+// Start of CalendarEntry
+
+// TODO: Add Subjects and courses
+@JsonSerializable()
+class CalendarEntry {
+  int id, calendarEntryTypeId;
+  int? o365EventId, googleEventId;
+  String title, text, description, formattedStartDate, formattedEndDate;
+  Uri? url;
+  bool hasAttachments;
+
+  @JsonKey(fromJson: _fullDateFromJson, toJson: _fullDateToJson)
+  DateTime startDateFull, endDateFull;
+
+  @JsonKey(fromJson: _dateFromJson, toJson: _dateToJson)
+  DateTime startDate, endDate;
+
+  @JsonKey(fromJson: _timeFromJson, toJson: _timeToJson)
+  DateTime? startTime, endTime;
+
+  List<CalendarEntrySubject> subjects;
+  List<dynamic> courses; // returned empty during testing
+
+  CalendarEntry(
+      this.calendarEntryTypeId,
+      this.description,
+      this.googleEventId,
+      this.hasAttachments,
+      this.id,
+      this.o365EventId,
+      this.text,
+      this.title,
+      this.url,
+      this.endDate,
+      this.endDateFull,
+      this.endTime,
+      this.formattedEndDate,
+      this.formattedStartDate,
+      this.startDate,
+      this.startDateFull,
+      this.startTime,
+      this.subjects,
+      this.courses);
+
+  static DateTime _fullDateFromJson(String val) =>
+      DateFormat('yyyy-MM-ddTHH:mm:ss').parse(val);
+  static String _fullDateToJson(DateTime val) =>
+      DateFormat('yyyy-MM-ddTHH:mm:ss').format(val);
+
+  static DateTime _dateFromJson(String val) =>
+      DateFormat('dd/MM/yyyy').parse(val);
+  static String _dateToJson(DateTime val) =>
+      DateFormat('dd/MM/yyyy').format(val);
+
+  static DateTime? _timeFromJson(String? val) =>
+      val != null ? DateFormat.Hm().parse(val) : null;
+  static String? _timeToJson(DateTime? val) =>
+      val != null ? DateFormat.Hm().format(val) : null;
+
+  factory CalendarEntry.fromJson(Map<String, dynamic> json) =>
+      _$CalendarEntryFromJson(json);
+  Map<String, dynamic> toJson() => _$CalendarEntryToJson(this);
+}
+
+@JsonSerializable()
+class CalendarEntrySubject {
+  int id;
+  String title;
+  CalendarEntrySubject(this.id, this.title);
+
+  factory CalendarEntrySubject.fromJson(Map<String, dynamic> json) =>
+      _$CalendarEntrySubjectFromJson(json);
+  Map<String, dynamic> toJson() => _$CalendarEntrySubjectToJson(this);
+}
+
+// End of CalendarEntry
