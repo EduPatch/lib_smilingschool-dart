@@ -4,6 +4,7 @@ import 'package:lib_smilingschool/src/api/bindings/attendance.dart';
 import 'package:lib_smilingschool/src/api/bindings/assessment.dart';
 import 'package:lib_smilingschool/src/api/bindings/authentication.dart';
 import 'package:lib_smilingschool/src/api/bindings/calendar.dart';
+import 'package:lib_smilingschool/src/api/bindings/classlist.dart';
 import 'package:lib_smilingschool/src/api/bindings/communication.dart';
 import 'package:lib_smilingschool/src/api/bindings/documentation.dart';
 import 'package:lib_smilingschool/src/api/bindings/notifications.dart';
@@ -23,6 +24,7 @@ class InfoMentor {
   Documentation? documentation;
   Assessment? assessment;
   Calendar? calendar;
+  Classlist? classlist;
 
   InfoMentor({required this.client}) {
     authentication = Authentication(client: client);
@@ -35,6 +37,7 @@ class InfoMentor {
     documentation = Documentation(client: client);
     assessment = Assessment(client: client);
     calendar = Calendar(client: client);
+    classlist = Classlist(client: client);
   }
 }
 

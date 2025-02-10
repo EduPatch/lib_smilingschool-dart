@@ -2,8 +2,8 @@
 - [x] Assessment
 - [x] Attendance
 - [x] Authentication
-- [ ] Calendar
-- [ ] Classlist
+- [X] Calendar
+- [X] Classlist
 - [ ] Communication
 - [ ] Documentation
 - [ ] NotificationsApp

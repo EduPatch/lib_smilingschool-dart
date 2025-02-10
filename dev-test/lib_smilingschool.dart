@@ -75,4 +75,10 @@ void main() async {
           DateFormat("yyyy/MM/dd").parse("2024/12/23"), DateTime.now()))
       ?.first
       .description);*/
+  /*print((await client.classlist?.appData())?.fileUploadConfig.allowedMimeTypes);*/
+  /*print((await client.classlist?.getPupil("953878"))?.details.name);*/
+  /*print((await client.classlist
+          ?.getStaff("660383", establishmentId: "0000012345"))
+      ?.details
+      .pictureUrl);*/
 }
