@@ -2,6 +2,7 @@ import 'package:intl/intl.dart';
 import 'package:lib_smilingschool/src/api/models/calendar.models.dart';
 import 'package:lib_smilingschool/src/api_base.dart';
 
+/// API Bindings for the Calendar endpoints
 class Calendar extends BaseAPI {
   Calendar({required super.client});
 

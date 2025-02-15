@@ -2,6 +2,7 @@ import 'package:intl/intl.dart';
 import 'package:lib_smilingschool/src/api/models/timetable.models.dart';
 import 'package:lib_smilingschool/src/api_base.dart';
 
+/// API Bindings for the timetable endpoints
 class Timetable extends BaseAPI {
   Timetable({required super.client});
 

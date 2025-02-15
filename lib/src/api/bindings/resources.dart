@@ -1,5 +1,6 @@
 import 'package:lib_smilingschool/src/api_base.dart';
 
+/// API Bindings for the resources endpoints
 class Resource extends BaseAPI {
   Resource({required super.client});
 

@@ -1,6 +1,7 @@
 import 'package:lib_smilingschool/src/api/models/assessment.models.dart';
 import 'package:lib_smilingschool/src/api_base.dart';
 
+/// API Bindings for the assessment endpoints
 class Assessment extends BaseAPI {
   Assessment({required super.client});
 

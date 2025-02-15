@@ -1,6 +1,7 @@
 import 'package:lib_smilingschool/src/api/models/classlist.models.dart';
 import 'package:lib_smilingschool/src/api_base.dart';
 
+/// API Bindings for the classlist endpoints
 class Classlist extends BaseAPI {
   Classlist({required super.client});
 

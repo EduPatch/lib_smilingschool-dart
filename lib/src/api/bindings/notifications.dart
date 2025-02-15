@@ -1,6 +1,7 @@
 import 'package:lib_smilingschool/src/api/models/notifications.models.dart';
 import 'package:lib_smilingschool/src/api_base.dart';
 
+/// API Bindings for the notification endpoints
 class Notifications extends BaseAPI {
   Notifications({required super.client});
 

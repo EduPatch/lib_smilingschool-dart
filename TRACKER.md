@@ -4,7 +4,7 @@
 - [x] Authentication
 - [X] Calendar
 - [X] Classlist
-- [ ] Communication
+- [X] Communication
 - [ ] Documentation
 - [ ] NotificationsApp
 - [ ] Resources

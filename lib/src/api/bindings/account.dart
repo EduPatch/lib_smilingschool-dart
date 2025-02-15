@@ -1,6 +1,7 @@
 import 'package:lib_smilingschool/src/api/models/account.models.dart';
 import 'package:lib_smilingschool/src/api_base.dart';
 
+/// API Bindings for the account endpoints
 class Account extends BaseAPI {
   Account({required super.client});
 

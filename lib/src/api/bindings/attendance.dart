@@ -1,6 +1,7 @@
 import 'package:lib_smilingschool/src/api/models/attendence.models.dart';
 import 'package:lib_smilingschool/src/api_base.dart';
 
+/// API Bindings for the Attendance endpoints
 class Attendance extends BaseAPI {
   Attendance({required super.client});
 
@@ -23,7 +24,7 @@ class Attendance extends BaseAPI {
   /// Hello! This function was not possible to test due to some restrictions in our testing account.
   /// If you find bugs please report them to our github!
   ///
-  /// // Edupatch Team
+  /// - Edupatch Team
   Future<AttendanceSecondaryStatusResponse> setSecondaryStatus(
       int id, bool approved) async {
     var rs = await super.client?.post(
