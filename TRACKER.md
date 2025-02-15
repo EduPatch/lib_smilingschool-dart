@@ -6,8 +6,8 @@
 - [X] Classlist
 - [X] Communication
 - [ ] Documentation
-- [ ] NotificationsApp
-- [ ] Resources
+- [X] NotificationsApp
+- [X] Resources
 - [ ] Task
 - [ ] Timeregistration
 - [ ] Timetable

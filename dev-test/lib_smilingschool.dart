@@ -81,4 +81,5 @@ void main() async {
           ?.getStaff("660383", establishmentId: "0000012345"))
       ?.details
       .pictureUrl);*/
+  /*print((await client.resource?.downloadThumbnail(15178104, 1000, 1000)));*/
 }
