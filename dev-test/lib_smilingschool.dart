@@ -82,4 +82,6 @@ void main() async {
       ?.details
       .pictureUrl);*/
   /*print((await client.resource?.downloadThumbnail(15178104, 1000, 1000)));*/
+  /*print((await client.task?.appData())?.allowedMimeTypes);*/
+  /*print((await client.task?.getTasks(327286))?.items.first.assignedOn);*/
 }

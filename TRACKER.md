@@ -8,7 +8,7 @@
 - [ ] Documentation
 - [X] NotificationsApp
 - [X] Resources
-- [ ] Task
+- [X] Task
 - [ ] Timeregistration
-- [ ] Timetable
+- [X] Timetable
 - [ ] Uol

@@ -10,6 +10,7 @@ import 'package:lib_smilingschool/src/api/bindings/documentation.dart';
 import 'package:lib_smilingschool/src/api/bindings/notifications.dart';
 import 'package:lib_smilingschool/src/api/bindings/resources.dart';
 import 'package:lib_smilingschool/src/api/bindings/timetable.dart';
+import 'package:lib_smilingschool/src/api/bindings/task.dart';
 
 export 'api/bindings/account.dart';
 export 'api/bindings/attendance.dart';
@@ -22,6 +23,7 @@ export 'api/bindings/documentation.dart';
 export 'api/bindings/notifications.dart';
 export 'api/bindings/resources.dart';
 export 'api/bindings/timetable.dart';
+export 'api/bindings/task.dart';
 
 class InfoMentor {
   bool loggedIn = false;
@@ -37,6 +39,7 @@ class InfoMentor {
   Assessment? assessment;
   Calendar? calendar;
   Classlist? classlist;
+  Task? task;
 
   InfoMentor({required this.client}) {
     authentication = Authentication(client: client);
@@ -50,6 +53,7 @@ class InfoMentor {
     assessment = Assessment(client: client);
     calendar = Calendar(client: client);
     classlist = Classlist(client: client);
+    task = Task(client: client);
   }
 }
 

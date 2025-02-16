@@ -611,7 +611,7 @@ class TaskAssessmentStatementItemListItem {
   static DateTime? _markDateFromJson(String val) =>
       val != "" ? DateFormat('dd/MM/yyyy').parse(val) : null;
   static String _markDateToJson(DateTime? val) =>
-      val != null ? val.toString() : "";
+      val != null ? DateFormat('dd/MM/yyyy').format(val) : "";
 }
 
 // AssessmentTaskGetItems END
