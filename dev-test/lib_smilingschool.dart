@@ -63,7 +63,7 @@ void main() async {
           ?.text);*/
   // Should be working, did some tests but cannot guarantee it won't die on us in production
   // <SpamixOfficial>
-  /*print((await client.attendance?.setSecondaryStatus(10695, false))?.success);*/
+  //print((await client.attendance?.setSecondaryStatus(10695, false))?.success);
   /*print((await client.attendance?.registerAttendance(
           false, AttendanceDay.today, AttendanceAbsenceType.day))
       ?.comment);*/
@@ -84,4 +84,6 @@ void main() async {
   /*print((await client.resource?.downloadThumbnail(15178104, 1000, 1000)));*/
   /*print((await client.task?.appData())?.allowedMimeTypes);*/
   /*print((await client.task?.getTasks(327286))?.items.first.assignedOn);*/
+  /*print((await client.timeregistration?.appData())?.timeRegistrationDates);*/
+  /*print((await client.timeregistration?.getTimeRegistration(DateTime(2025, 5, 5)))?.days.first.date);*/
 }
