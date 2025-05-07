@@ -51,7 +51,7 @@ class TimeregistrationAppData {
 
   // helper functions
   static List<DateTime?> _regDateFromJson(List<String> val) => val
-      .map((x) => x != null ? DateFormat('yyyy-MM-dd').parse(x) : null)
+      .map((x) => x != "" ? DateFormat('yyyy-MM-dd').parse(x) : null)
       .toList();
   static List<String> _regDateToJson(List<DateTime?> val) =>
       val.map((x) => x != null ? x.toString() : "").toList();
