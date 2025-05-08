@@ -188,6 +188,7 @@ class TimeregistrationAppDataTranslations {
 
 @JsonSerializable()
 class TimeregistrationTimeRegistration {
+  @JsonKey(toJson: _dateNoMicroNullToJson)
   final DateTime? startDate, endDate;
   List<TimeregistrationTimeRegistrationDay> days;
 
@@ -199,12 +200,17 @@ class TimeregistrationTimeRegistration {
 
   Map<String, dynamic> toJson() =>
       _$TimeregistrationTimeRegistrationToJson(this);
+
+  static String? _dateNoMicroNullToJson(DateTime? val) =>
+      val?.toIso8601String().replaceAll(RegExp(r'\.000'), "");
 }
 
 @JsonSerializable()
 class TimeregistrationTimeRegistrationDay {
+  @JsonKey(toJson: _dateNoMicroToJson)
   DateTime date, schoolOpeningTime, schoolClosingTime;
-  //DateTime? startDateTime, endDateTime;
+  @JsonKey(toJson: _dateNoMicroNullToJson)
+  DateTime? startDateTime, endDateTime;
   String schoolClosedReason;
   bool onLeave,
       isLocked,
@@ -218,7 +224,7 @@ class TimeregistrationTimeRegistrationDay {
       this.canEdit,
       this.canEditComment,
       this.date,
-      //this.endDateTime,
+      this.endDateTime,
       this.hasComments,
       this.hasUnreadComments,
       this.isLocked,
@@ -227,7 +233,7 @@ class TimeregistrationTimeRegistrationDay {
       this.schoolClosedReason,
       this.schoolClosingTime,
       this.schoolOpeningTime,
-      //this.startDateTime,
+      this.startDateTime,
       this.timeRegistrationId);
 
   factory TimeregistrationTimeRegistrationDay.fromJson(
@@ -236,4 +242,153 @@ class TimeregistrationTimeRegistrationDay {
 
   Map<String, dynamic> toJson() =>
       _$TimeregistrationTimeRegistrationDayToJson(this);
+
+  static String _dateNoMicroToJson(DateTime val) =>
+      val.toIso8601String().replaceAll(RegExp(r'\.000'), "");
+
+  static String? _dateNoMicroNullToJson(DateTime? val) =>
+      val?.toIso8601String().replaceAll(RegExp(r'\.000'), "");
+}
+
+/// When a fail-response is sent back, the error will be in Notifications
+@JsonSerializable()
+class TimeregistrationSaveResponse {
+  bool success;
+  List<TimeregistrationSaveResponseNotification> notifications;
+
+  TimeregistrationSaveResponse(this.notifications, this.success);
+
+  factory TimeregistrationSaveResponse.fromJson(Map<String, dynamic> json) =>
+      _$TimeregistrationSaveResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TimeregistrationSaveResponseToJson(this);
+}
+
+@JsonSerializable()
+class TimeregistrationSaveResponseNotification {
+  String? message, title;
+
+  /// In practice I've always found this to be non-null, but considering that random things suddenly turn null in this API I don't wanna risk it :)
+  ///
+  /// This should be an enum but I can't find the enum-items in the website scripts, so for now it will be a script
+  String? type;
+
+  TimeregistrationSaveResponseNotification(this.message, this.title, this.type);
+
+  factory TimeregistrationSaveResponseNotification.fromJson(
+          Map<String, dynamic> json) =>
+      _$TimeregistrationSaveResponseNotificationFromJson(json);
+
+  Map<String, dynamic> toJson() =>
+      _$TimeregistrationSaveResponseNotificationToJson(this);
+}
+
+enum RegistrationType {
+  @JsonValue("TimeReg")
+  timeReg,
+  @JsonValue("OnLeave")
+  onLeave;
+
+  @override
+  String toString() {
+    switch (this) {
+      case RegistrationType.onLeave:
+        return "OnLeave";
+      case RegistrationType.timeReg:
+        return "TimeReg";
+    }
+  }
+}
+
+/// If updating an existing [TimeregistrationTimeRegistrationDay] please use the conversion method:
+/// [TimeregistrationUserDay.fromTimeregistrationTimeRegistrationDay]
+@JsonSerializable()
+class TimeregistrationUserDay {
+  @JsonKey(toJson: _dateNoMicroToJson)
+  DateTime date, schoolOpeningTime, schoolClosingTime;
+  String schoolClosedReason;
+
+  /// Set onLeave to true when registrationType is RegistrationType.onLeave
+  bool onLeave,
+      isLocked,
+      isSchoolClosed,
+      canEdit,
+      hasUnreadComments,
+      hasComments,
+
+      /// should always be left true when updating ANYTHING
+      hasChanged,
+      canEditComment,
+      isCommentUpdated;
+  int timeRegistrationId;
+
+  /// Has no apparent purpose
+  String commentText;
+
+  ///Has no apparent purpose either
+  int commentId;
+
+  /// Set to RegistrationType.onLeave when field onLeave is enabled
+  RegistrationType registrationType;
+
+  TimeregistrationUserDay(
+      this.timeRegistrationId,
+      this.canEdit,
+      this.canEditComment,
+      this.date,
+      this.hasComments,
+      this.hasUnreadComments,
+      this.isLocked,
+      this.isSchoolClosed,
+      this.onLeave,
+      this.schoolClosedReason,
+      this.schoolClosingTime,
+      this.schoolOpeningTime,
+      this.commentId,
+      this.commentText,
+      this.hasChanged,
+      this.registrationType,
+      this.isCommentUpdated);
+
+  factory TimeregistrationUserDay.fromJson(Map<String, dynamic> json) =>
+      _$TimeregistrationUserDayFromJson(json);
+
+  Map<String, dynamic> toJson() => _$TimeregistrationUserDayToJson(this);
+
+  /// Convert a [TimeregistrationTimeRegistrationDay] (short timeRegDay) to a [TimeregistrationUserDay]
+  /// Optional fields should ONLY be set if you are changing anything.
+  ///
+  /// regType should be modified to [RegistrationType.onLeave] if onLeave is true
+  ///
+  /// When changing anything set hasChanged to true!
+  static TimeregistrationUserDay fromTimeregistrationTimeRegistrationDay(
+      TimeregistrationTimeRegistrationDay timeRegDay,
+      {RegistrationType regType = RegistrationType.timeReg,
+      bool? onLeave,
+      bool? hasUnreadComments,
+      bool? hasComments,
+      bool hasChanged = false}) {
+    return TimeregistrationUserDay(
+        timeRegDay.timeRegistrationId,
+        timeRegDay.canEdit,
+        timeRegDay.canEditComment,
+        timeRegDay.date,
+        hasComments ?? timeRegDay.hasComments,
+        hasUnreadComments ?? timeRegDay.hasUnreadComments,
+        timeRegDay.isLocked,
+        timeRegDay.isSchoolClosed,
+        onLeave ?? timeRegDay.onLeave,
+        timeRegDay.schoolClosedReason,
+        timeRegDay.schoolClosingTime,
+        timeRegDay.schoolOpeningTime,
+        0, // default for commentId, seems to have no real purpose since comment is a separate API endpoint
+        "", // also default for commentText
+        hasChanged,
+        regType,
+        false // default
+        );
+  }
+
+  static String _dateNoMicroToJson(DateTime val) =>
+      val.toIso8601String().replaceAll(RegExp(r'\.000'), "");
 }

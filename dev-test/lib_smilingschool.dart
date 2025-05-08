@@ -6,6 +6,7 @@ import 'dart:io';
 //import 'package:intl/intl.dart';
 //import 'package:intl/intl.dart';
 import 'package:lib_smilingschool/lib_smilingschool.dart';
+//import 'package:lib_smilingschool/src/api/models/timeregistration.models.dart';
 //import 'package:lib_smilingschool/src/api/bindings/calendar.dart';
 //import 'package:lib_smilingschool/src/api/bindings/attendance.dart';
 //import 'package:lib_smilingschool/src/api/bindings/assessment.dart';
@@ -85,5 +86,14 @@ void main() async {
   /*print((await client.task?.appData())?.allowedMimeTypes);*/
   /*print((await client.task?.getTasks(327286))?.items.first.assignedOn);*/
   /*print((await client.timeregistration?.appData())?.timeRegistrationDates);*/
-  /*print((await client.timeregistration?.getTimeRegistration(DateTime(2025, 5, 5)))?.days.first.date);*/
+  /*TimeregistrationTimeRegistrationDay obj =
+      (await client.timeregistration?.getTimeRegistration(DateTime(2025, 5, 8)))
+              ?.days
+              .last ??
+          exit(1); // just exit lol
+  print((await client.timeregistration?.saveTimeRegistration([
+    TimeregistrationUserDay.fromTimeregistrationTimeRegistrationDay(obj,
+        hasChanged: true, onLeave: true, regType: RegistrationType.onLeave)
+  ]))
+      ?.success);*/
 }

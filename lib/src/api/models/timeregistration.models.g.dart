@@ -173,8 +173,10 @@ TimeregistrationTimeRegistration _$TimeregistrationTimeRegistrationFromJson(
 Map<String, dynamic> _$TimeregistrationTimeRegistrationToJson(
         TimeregistrationTimeRegistration instance) =>
     <String, dynamic>{
-      'startDate': instance.startDate?.toIso8601String(),
-      'endDate': instance.endDate?.toIso8601String(),
+      'startDate': TimeregistrationTimeRegistration._dateNoMicroNullToJson(
+          instance.startDate),
+      'endDate': TimeregistrationTimeRegistration._dateNoMicroNullToJson(
+          instance.endDate),
       'days': instance.days,
     };
 
@@ -184,6 +186,9 @@ TimeregistrationTimeRegistrationDay
           json['canEdit'] as bool,
           json['canEditComment'] as bool,
           DateTime.parse(json['date'] as String),
+          json['endDateTime'] == null
+              ? null
+              : DateTime.parse(json['endDateTime'] as String),
           json['hasComments'] as bool,
           json['hasUnreadComments'] as bool,
           json['isLocked'] as bool,
@@ -192,15 +197,28 @@ TimeregistrationTimeRegistrationDay
           json['schoolClosedReason'] as String,
           DateTime.parse(json['schoolClosingTime'] as String),
           DateTime.parse(json['schoolOpeningTime'] as String),
+          json['startDateTime'] == null
+              ? null
+              : DateTime.parse(json['startDateTime'] as String),
           (json['timeRegistrationId'] as num).toInt(),
         );
 
 Map<String, dynamic> _$TimeregistrationTimeRegistrationDayToJson(
         TimeregistrationTimeRegistrationDay instance) =>
     <String, dynamic>{
-      'date': instance.date.toIso8601String(),
-      'schoolOpeningTime': instance.schoolOpeningTime.toIso8601String(),
-      'schoolClosingTime': instance.schoolClosingTime.toIso8601String(),
+      'date':
+          TimeregistrationTimeRegistrationDay._dateNoMicroToJson(instance.date),
+      'schoolOpeningTime':
+          TimeregistrationTimeRegistrationDay._dateNoMicroToJson(
+              instance.schoolOpeningTime),
+      'schoolClosingTime':
+          TimeregistrationTimeRegistrationDay._dateNoMicroToJson(
+              instance.schoolClosingTime),
+      'startDateTime':
+          TimeregistrationTimeRegistrationDay._dateNoMicroNullToJson(
+              instance.startDateTime),
+      'endDateTime': TimeregistrationTimeRegistrationDay._dateNoMicroNullToJson(
+          instance.endDateTime),
       'schoolClosedReason': instance.schoolClosedReason,
       'onLeave': instance.onLeave,
       'isLocked': instance.isLocked,
@@ -211,3 +229,88 @@ Map<String, dynamic> _$TimeregistrationTimeRegistrationDayToJson(
       'canEditComment': instance.canEditComment,
       'timeRegistrationId': instance.timeRegistrationId,
     };
+
+TimeregistrationSaveResponse _$TimeregistrationSaveResponseFromJson(
+        Map<String, dynamic> json) =>
+    TimeregistrationSaveResponse(
+      (json['notifications'] as List<dynamic>)
+          .map((e) => TimeregistrationSaveResponseNotification.fromJson(
+              e as Map<String, dynamic>))
+          .toList(),
+      json['success'] as bool,
+    );
+
+Map<String, dynamic> _$TimeregistrationSaveResponseToJson(
+        TimeregistrationSaveResponse instance) =>
+    <String, dynamic>{
+      'success': instance.success,
+      'notifications': instance.notifications,
+    };
+
+TimeregistrationSaveResponseNotification
+    _$TimeregistrationSaveResponseNotificationFromJson(
+            Map<String, dynamic> json) =>
+        TimeregistrationSaveResponseNotification(
+          json['message'] as String?,
+          json['title'] as String?,
+          json['type'] as String?,
+        );
+
+Map<String, dynamic> _$TimeregistrationSaveResponseNotificationToJson(
+        TimeregistrationSaveResponseNotification instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'title': instance.title,
+      'type': instance.type,
+    };
+
+TimeregistrationUserDay _$TimeregistrationUserDayFromJson(
+        Map<String, dynamic> json) =>
+    TimeregistrationUserDay(
+      (json['timeRegistrationId'] as num).toInt(),
+      json['canEdit'] as bool,
+      json['canEditComment'] as bool,
+      DateTime.parse(json['date'] as String),
+      json['hasComments'] as bool,
+      json['hasUnreadComments'] as bool,
+      json['isLocked'] as bool,
+      json['isSchoolClosed'] as bool,
+      json['onLeave'] as bool,
+      json['schoolClosedReason'] as String,
+      DateTime.parse(json['schoolClosingTime'] as String),
+      DateTime.parse(json['schoolOpeningTime'] as String),
+      (json['commentId'] as num).toInt(),
+      json['commentText'] as String,
+      json['hasChanged'] as bool,
+      $enumDecode(_$RegistrationTypeEnumMap, json['registrationType']),
+      json['isCommentUpdated'] as bool,
+    );
+
+Map<String, dynamic> _$TimeregistrationUserDayToJson(
+        TimeregistrationUserDay instance) =>
+    <String, dynamic>{
+      'date': TimeregistrationUserDay._dateNoMicroToJson(instance.date),
+      'schoolOpeningTime': TimeregistrationUserDay._dateNoMicroToJson(
+          instance.schoolOpeningTime),
+      'schoolClosingTime': TimeregistrationUserDay._dateNoMicroToJson(
+          instance.schoolClosingTime),
+      'schoolClosedReason': instance.schoolClosedReason,
+      'onLeave': instance.onLeave,
+      'isLocked': instance.isLocked,
+      'isSchoolClosed': instance.isSchoolClosed,
+      'canEdit': instance.canEdit,
+      'hasUnreadComments': instance.hasUnreadComments,
+      'hasComments': instance.hasComments,
+      'hasChanged': instance.hasChanged,
+      'canEditComment': instance.canEditComment,
+      'isCommentUpdated': instance.isCommentUpdated,
+      'timeRegistrationId': instance.timeRegistrationId,
+      'commentText': instance.commentText,
+      'commentId': instance.commentId,
+      'registrationType': _$RegistrationTypeEnumMap[instance.registrationType]!,
+    };
+
+const _$RegistrationTypeEnumMap = {
+  RegistrationType.timeReg: 'TimeReg',
+  RegistrationType.onLeave: 'OnLeave',
+};

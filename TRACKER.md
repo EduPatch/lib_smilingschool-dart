@@ -9,6 +9,6 @@
 - [X] NotificationsApp
 - [X] Resources
 - [X] Task
-- [ ] Timeregistration
+- [X] Timeregistration
 - [X] Timetable
 - [ ] Uol
