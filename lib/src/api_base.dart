@@ -12,6 +12,7 @@ import 'package:lib_smilingschool/src/api/bindings/resources.dart';
 import 'package:lib_smilingschool/src/api/bindings/timeregistration.dart';
 import 'package:lib_smilingschool/src/api/bindings/timetable.dart';
 import 'package:lib_smilingschool/src/api/bindings/task.dart';
+import 'package:lib_smilingschool/src/api/bindings/uolv2.dart';
 
 export 'api/bindings/account.dart';
 export 'api/bindings/attendance.dart';
@@ -42,6 +43,7 @@ class InfoMentor {
   Classlist? classlist;
   Task? task;
   Timeregistration? timeregistration;
+  UolV2? uolv2;
 
   InfoMentor({required this.client}) {
     authentication = Authentication(client: client);
@@ -57,6 +59,7 @@ class InfoMentor {
     classlist = Classlist(client: client);
     task = Task(client: client);
     timeregistration = Timeregistration(client: client);
+    uolv2 = UolV2(client: client);
   }
 }
 

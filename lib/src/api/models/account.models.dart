@@ -45,7 +45,7 @@ class PreferencesAppDataSectionsNotifications {
 
 @JsonSerializable()
 class PreferencesAppDataSectionNotificationsUrls {
-  final String updateNotification;
+  final Uri updateNotification;
   PreferencesAppDataSectionNotificationsUrls(this.updateNotification);
 
   factory PreferencesAppDataSectionNotificationsUrls.fromJson(

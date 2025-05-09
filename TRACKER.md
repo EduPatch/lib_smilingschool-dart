@@ -11,4 +11,4 @@
 - [X] Task
 - [X] Timeregistration
 - [X] Timetable
-- [ ] Uol
+- [X] Uol

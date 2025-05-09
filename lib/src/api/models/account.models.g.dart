@@ -70,13 +70,13 @@ PreferencesAppDataSectionNotificationsUrls
     _$PreferencesAppDataSectionNotificationsUrlsFromJson(
             Map<String, dynamic> json) =>
         PreferencesAppDataSectionNotificationsUrls(
-          json['updateNotification'] as String,
+          Uri.parse(json['updateNotification'] as String),
         );
 
 Map<String, dynamic> _$PreferencesAppDataSectionNotificationsUrlsToJson(
         PreferencesAppDataSectionNotificationsUrls instance) =>
     <String, dynamic>{
-      'updateNotification': instance.updateNotification,
+      'updateNotification': instance.updateNotification.toString(),
     };
 
 PreferencesAppDataSectionsNotification

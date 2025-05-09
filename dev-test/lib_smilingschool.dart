@@ -6,6 +6,7 @@ import 'dart:io';
 //import 'package:intl/intl.dart';
 //import 'package:intl/intl.dart';
 import 'package:lib_smilingschool/lib_smilingschool.dart';
+//import 'package:lib_smilingschool/src/api/models/uolv2.models.dart';
 //import 'package:lib_smilingschool/src/api/models/timeregistration.models.dart';
 //import 'package:lib_smilingschool/src/api/bindings/calendar.dart';
 //import 'package:lib_smilingschool/src/api/bindings/attendance.dart';
@@ -96,4 +97,8 @@ void main() async {
         hasChanged: true, onLeave: true, regType: RegistrationType.onLeave)
   ]))
       ?.success);*/
+  /*print((await client.uolv2?.appData())?.lastChanged);
+  print((await client.uolv2?.getUols(
+          337875, [UolState.active, UolState.finished, UolState.notstarted]))
+      ?.lastChanged);*/
 }
