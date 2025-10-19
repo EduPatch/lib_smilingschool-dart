@@ -450,7 +450,7 @@ AttendanceListItem _$AttendanceListItemFromJson(Map<String, dynamic> json) =>
       AttendanceListItem._minutesFromJson(json['minutes'] as String?),
       json['reason'] as String?,
       json['registeredByName'] as String?,
-      DateTime.parse(json['shortDate'] as String),
+      AttendanceListItem._dateFromJson(json['shortDate'] as String),
       json['subject'] as String?,
       AttendanceListItem._timeFromJson(json['time'] as String?),
     );
@@ -459,7 +459,7 @@ Map<String, dynamic> _$AttendanceListItemToJson(AttendanceListItem instance) =>
     <String, dynamic>{
       'id': instance.id,
       'minutes': AttendanceListItem._minutesToJson(instance.minutes),
-      'shortDate': instance.shortDate.toIso8601String(),
+      'shortDate': AttendanceListItem._dateToJson(instance.shortDate),
       'time': AttendanceListItem._timeToJson(instance.time),
       'longDate': instance.longDate,
       'reason': instance.reason,
@@ -468,4 +468,96 @@ Map<String, dynamic> _$AttendanceListItemToJson(AttendanceListItem instance) =>
       'registeredByName': instance.registeredByName,
       'establishmentName': instance.establishmentName,
       'halfDaysCount': instance.halfDaysCount,
+    };
+
+AttendanceSecondaryStatusResponse _$AttendanceSecondaryStatusResponseFromJson(
+        Map<String, dynamic> json) =>
+    AttendanceSecondaryStatusResponse(
+      json['success'] as bool,
+    );
+
+Map<String, dynamic> _$AttendanceSecondaryStatusResponseToJson(
+        AttendanceSecondaryStatusResponse instance) =>
+    <String, dynamic>{
+      'success': instance.success,
+    };
+
+AttendanceRegisterAttendanceResponse
+    _$AttendanceRegisterAttendanceResponseFromJson(Map<String, dynamic> json) =>
+        AttendanceRegisterAttendanceResponse(
+          json['success'] as bool,
+          json['comment'] as String,
+        );
+
+Map<String, dynamic> _$AttendanceRegisterAttendanceResponseToJson(
+        AttendanceRegisterAttendanceResponse instance) =>
+    <String, dynamic>{
+      'success': instance.success,
+      'comment': instance.comment,
+    };
+
+AttendanceLeaveRequest _$AttendanceLeaveRequestFromJson(
+        Map<String, dynamic> json) =>
+    AttendanceLeaveRequest(
+      json['approvedByTitle'] as String,
+      json['approverComment'] as String?,
+      json['canApprove'] as bool,
+      json['canDelete'] as bool,
+      json['canDeny'] as bool,
+      json['createdBy'] as String,
+      json['createdByTitle'] as String,
+      json['dateRangeTitle'] as String,
+      AttendanceLeaveRequest._dateFromJson(json['fromDate'] as String),
+      AttendanceLeaveRequest._timeFromJson(json['fromTime'] as String?),
+      (json['id'] as num).toInt(),
+      json['isAwaitingResponseFromCurrentUser'] as bool,
+      json['requesterComment'] as String,
+      json['secondaryApprovalText'] as String,
+      json['secondaryParentApprovalDateText'] as String,
+      AttendanceLeaveRequest._fullDateFromJson(
+          json['secondaryParentApprovalDate'] as String?),
+      (json['secondaryParentApproverId'] as num?)?.toInt(),
+      json['secondaryParentApproverName'] as String?,
+      json['secondaryParentStatus'] as String,
+      json['showApproveButton'] as bool,
+      json['showDeleteButton'] as bool,
+      json['showDenyButton'] as bool,
+      json['status'] as String,
+      AttendanceLeaveRequest._dateFromJson(json['toDate'] as String),
+      AttendanceLeaveRequest._timeFromJson(json['toTime'] as String?),
+      AttendanceLeaveRequest._dateFromJson(json['updatedDate'] as String),
+    );
+
+Map<String, dynamic> _$AttendanceLeaveRequestToJson(
+        AttendanceLeaveRequest instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'secondaryParentApproverId': instance.secondaryParentApproverId,
+      'dateRangeTitle': instance.dateRangeTitle,
+      'status': instance.status,
+      'requesterComment': instance.requesterComment,
+      'createdBy': instance.createdBy,
+      'approvedByTitle': instance.approvedByTitle,
+      'createdByTitle': instance.createdByTitle,
+      'secondaryApprovalText': instance.secondaryApprovalText,
+      'secondaryParentStatus': instance.secondaryParentStatus,
+      'secondaryParentApprovalDateText':
+          instance.secondaryParentApprovalDateText,
+      'approverComment': instance.approverComment,
+      'secondaryParentApproverName': instance.secondaryParentApproverName,
+      'canDelete': instance.canDelete,
+      'canApprove': instance.canApprove,
+      'canDeny': instance.canDeny,
+      'showDeleteButton': instance.showDeleteButton,
+      'showApproveButton': instance.showApproveButton,
+      'showDenyButton': instance.showDenyButton,
+      'isAwaitingResponseFromCurrentUser':
+          instance.isAwaitingResponseFromCurrentUser,
+      'toTime': AttendanceLeaveRequest._timeToJson(instance.toTime),
+      'fromTime': AttendanceLeaveRequest._timeToJson(instance.fromTime),
+      'secondaryParentApprovalDate': AttendanceLeaveRequest._fullDateToJson(
+          instance.secondaryParentApprovalDate),
+      'fromDate': AttendanceLeaveRequest._dateToJson(instance.fromDate),
+      'toDate': AttendanceLeaveRequest._dateToJson(instance.toDate),
+      'updatedDate': AttendanceLeaveRequest._dateToJson(instance.updatedDate),
     };

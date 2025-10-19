@@ -1,6 +1,7 @@
 import 'package:lib_smilingschool/src/api/models/documentation.models.dart';
 import 'package:lib_smilingschool/src/api_base.dart';
 
+/// API Bindings for the documentation endpoints
 class Documentation extends BaseAPI {
   Documentation({required super.client});
 

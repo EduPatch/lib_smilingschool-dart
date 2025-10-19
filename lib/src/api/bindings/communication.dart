@@ -1,6 +1,14 @@
 import 'package:lib_smilingschool/src/api/models/communication.models.dart';
 import 'package:lib_smilingschool/src/api_base.dart';
 
+/// API Bindings for the communication endpoints
+///
+/// NOTE: We chose not to implement GetCurrentList here because we have no return data for it whatsoever, so we have no idea how to actually map it to json.
+///
+/// If you manage to get response data from it which isn't an empty list, feel free to contact me (Spamix) or another lib_smilingshcool-dart maintainer on discord!
+/// Discord username: sapmix
+///
+/// - Edupatch maintainers
 class Communication extends BaseAPI {
   Communication({required super.client});
 

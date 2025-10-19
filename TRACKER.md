@@ -1,11 +1,14 @@
-| Name           | Status | Additional Comment                           |
-|----------------|--------|----------------------------------------------|
-| Account        | ✅      |                                              |
-| Assessments    | 🔴     | Can't be implemented because there's no data |
-| Attendance     | ✅     |                                              |
-| Authentication | ✅      |                                              |
-| Communication  | ✅     |                                              |
-| Documentation  | ✅     |                                              |
-| Notifications  | ✅      |                                              |
-| Resources      | ✅      |                                              |
-| Timetable      | ✅      |                                              |
+- [x] Account
+- [x] Assessment
+- [x] Attendance
+- [x] Authentication
+- [X] Calendar
+- [X] Classlist
+- [X] Communication
+- [ ] Documentation
+- [X] NotificationsApp
+- [X] Resources
+- [X] Task
+- [X] Timeregistration
+- [X] Timetable
+- [X] Uol
