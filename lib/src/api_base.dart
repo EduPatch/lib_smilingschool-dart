@@ -1,3 +1,4 @@
+import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:lib_smilingschool/src/api/bindings/account.dart';
 import 'package:lib_smilingschool/src/api/bindings/attendance.dart';
@@ -30,6 +31,7 @@ export 'api/bindings/task.dart';
 class InfoMentor {
   bool loggedIn = false;
   Dio? client;
+  DefaultCookieJar cookieJar;
   Authentication? authentication;
   Account? account;
   Notifications? notifications;
@@ -45,7 +47,7 @@ class InfoMentor {
   Timeregistration? timeregistration;
   UolV2? uolv2;
 
-  InfoMentor({required this.client}) {
+  InfoMentor({required this.client, required this.cookieJar}) {
     authentication = Authentication(client: client);
     account = Account(client: client);
     notifications = Notifications(client: client);
@@ -60,6 +62,20 @@ class InfoMentor {
     task = Task(client: client);
     timeregistration = Timeregistration(client: client);
     uolv2 = UolV2(client: client);
+  }
+
+  Map<Uri, SerializableCookie> exportCookies() {
+    Map<Uri, SerializableCookie> res = {};
+    var a = cookieJar.hostCookies;
+    for (var host in a.keys) {
+      for (var path in a[host]!.keys) {
+        for (var cookie in a[host]![path]!.values) {
+          res[Uri(host: host, path: path)] = cookie;
+        }
+      }
+    }
+
+    return res;
   }
 }
 

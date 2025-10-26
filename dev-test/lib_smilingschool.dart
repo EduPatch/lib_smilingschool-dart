@@ -2,9 +2,11 @@
 
 // You can use this file as reference for using this module but doing this is not recommended :D
 
+import 'dart:convert';
 import 'dart:io';
 //import 'package:intl/intl.dart';
 //import 'package:intl/intl.dart';
+import 'package:cookie_jar/cookie_jar.dart';
 import 'package:lib_smilingschool/lib_smilingschool.dart';
 //import 'package:lib_smilingschool/src/api/models/uolv2.models.dart';
 //import 'package:lib_smilingschool/src/api/models/timeregistration.models.dart';
@@ -22,6 +24,7 @@ void main() async {
   //print('$user | $pass');
   InfoMentor client;
   client = await UserPass().loginCredentials(user, pass);
+  print(client.exportCookies());
   var isAuthenticated = await client.authentication?.isAuthenticated();
   print(isAuthenticated ?? false);
 

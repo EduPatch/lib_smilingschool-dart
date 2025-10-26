@@ -6,7 +6,7 @@ class StockholmSTU extends Login {
     loginInit();
     final samlResponse = await _loginToSSO(user, password);
     await _loginToIM(samlResponse);
-    var imObj = InfoMentor(client: super.client);
+    var imObj = InfoMentor(client: super.client, cookieJar: super.cookieJar);
     imObj.loggedIn = true;
     return Future.value(imObj);
   }

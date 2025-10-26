@@ -9,3 +9,8 @@
 - Bugfixes
 - Fix documentation
 - Improve serialization and deserialization
+
+## 1.1.0-pre.2
+
+- Added option to log in using an existing cookie-store
+- Added function to export cookies from client for storage

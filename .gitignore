@@ -28,3 +28,5 @@ doc/api/
 
 # vscode
 .vscode
+
+*.DS_STORE

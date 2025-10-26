@@ -26,7 +26,7 @@ class CookieFixer extends Interceptor {
 
 class Login {
   Dio? client;
-  final cookieJar = CookieJar();
+  final cookieJar = DefaultCookieJar();
 
   void loginInit() {
     client = Dio();

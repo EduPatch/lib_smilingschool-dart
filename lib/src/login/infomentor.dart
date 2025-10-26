@@ -1,3 +1,4 @@
+import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:lib_smilingschool/src/login.dart';
 import 'package:lib_smilingschool/src/api_base.dart';
@@ -6,7 +7,7 @@ class UserPass extends Login {
   Future<InfoMentor> loginCredentials(String user, String password) async {
     loginInit();
     await _loginToIM(user, password);
-    var imObj = InfoMentor(client: super.client);
+    var imObj = InfoMentor(client: super.client, cookieJar: super.cookieJar);
     imObj.loggedIn = true;
     return Future.value(imObj);
   }
@@ -62,5 +63,15 @@ class UserPass extends Login {
         loginCallback, HttpMethod.get, null, 'https://hub.infomentor.se');
 
     // Login is finally done
+  }
+}
+
+class CookieLogin extends Login {
+  Future<InfoMentor> createClientWithStore(Map<Uri,List<Cookie>> cookies) {
+    loginInit();
+    cookies.forEach((u,l) => super.cookieJar.saveFromResponse(u, l));
+    var imObj = InfoMentor(client: super.client, cookieJar: super.cookieJar);
+    imObj.loggedIn = true;
+    return Future.value(imObj);
   }
 }
