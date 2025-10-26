@@ -64,13 +64,15 @@ class InfoMentor {
     uolv2 = UolV2(client: client);
   }
 
-  Map<Uri, SerializableCookie> exportCookies() {
-    Map<Uri, SerializableCookie> res = {};
+  Map<Uri, List<SerializableCookie>> exportCookies() {
+    Map<Uri, List<SerializableCookie>> res = {};
     var a = cookieJar.hostCookies;
     for (var host in a.keys) {
       for (var path in a[host]!.keys) {
+        var uri = Uri(host: host, path: path);
+        res[uri] = [];
         for (var cookie in a[host]![path]!.values) {
-          res[Uri(host: host, path: path)] = cookie;
+          res[Uri(host: host, path: path)]!.add(cookie);
         }
       }
     }

@@ -24,9 +24,21 @@ void main() async {
   //print('$user | $pass');
   InfoMentor client;
   client = await UserPass().loginCredentials(user, pass);
-  print(client.exportCookies());
+  /*var cookies = client.exportCookies().map<Uri, List<Cookie>>(
+    (Uri uri, List<SerializableCookie> scList) {
+      List<Cookie> cookieList =
+          scList.map((SerializableCookie sc) => sc.cookie).toList();
+      return MapEntry(uri, cookieList);
+    },
+  );*/
+  //print(client.exportCookies());
   var isAuthenticated = await client.authentication?.isAuthenticated();
   print(isAuthenticated ?? false);
+/*
+  client = await CookieLogin().createClientWithStore(cookies);
+
+  isAuthenticated = await client.authentication?.isAuthenticated();
+  print(isAuthenticated ?? false);*/
 
   /*print((await client.timetable?.getTimetableList(
           -120,
